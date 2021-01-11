@@ -1,0 +1,6 @@
+{
+  "watch": ["lib", "background", "src", "icons", "public"],
+  "ext": "*",
+  "ignore": ["dist", "node_modules"],
+  "exec": "yarn build"
+}

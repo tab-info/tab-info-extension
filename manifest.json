@@ -1,0 +1,24 @@
+{
+  "name": "Page Meta Indicator",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Web application meta tag information, rendered in your browser toolbar",
+  "homepage_url": "http://github.com/mike-north/page-meta-indicator",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png",
+    "256": "icons/icon256.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": ["dist/background.bundle.js"],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "page action demo",
+    "default_popup": "dist/index.html"
+  },
+  "permissions": ["notifications", "tabs", "http://*/*", "https://*/*", "activeTab"]
+}

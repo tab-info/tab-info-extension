@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "es2015",
+    "target": "es2018",
+    "module": "ES2015",
     "inlineSourceMap": true,
     "inlineSources": true,
+    "strict": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "types": [
-      "qunit"
-    ]
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
-  "exclude": [
-    "node_modules",
-    "tmp",
-    "dist"
-  ]
+  "include": ["global.d.ts", "background", "src", "lib"],
+  "exclude": ["node_modules", "tmp", "dist"]
 }

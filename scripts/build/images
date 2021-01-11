@@ -1,0 +1,75 @@
+#! /usr/bin/env node
+const Jimp = require('jimp');
+const { join } = require('path');
+
+const PROJECT_ROOT = join(__dirname, '..', '..');
+const LOGO_SRC_LOCATION = join(PROJECT_ROOT, 'logo.png');
+const PUBLIC_FOLDER = join(PROJECT_ROOT, 'public');
+const ICONS_FOLDER = join(PROJECT_ROOT, 'icons');
+
+/**
+ * @type {{filename:string; width: number; resizeMode?: number}[]}
+ */
+const PUBLIC_FOLDER_VARIANTS = [
+  {
+    filename: 'logo512.png',
+    width: 512,
+  },
+  {
+    filename: 'logo192.png',
+    width: 192,
+  },
+  {
+    filename: 'favicon.png',
+    width: 16,
+    resizeMode: Jimp.RESIZE_NEAREST_NEIGHBOR,
+  },
+];
+
+/**
+ * @type {{filename:string; width: number; resizeMode?: number}[]}
+ */
+const ICONS_FOLDER_VARIANTS = [
+  {
+    filename: 'icon16.png',
+    width: 16,
+    resizeMode: Jimp.RESIZE_NEAREST_NEIGHBOR,
+  },
+  {
+    filename: 'icon19.png',
+    width: 19,
+  },
+  {
+    filename: 'icon48.png',
+    width: 48,
+  },
+  {
+    filename: 'icon128.png',
+    width: 128,
+  },
+  {
+    filename: 'icon256.png',
+    width: 256,
+  },
+  {
+    filename: 'icon512.png',
+    width: 512,
+  },
+];
+
+Jimp.read(LOGO_SRC_LOCATION, (err, lenna) => {
+  if (err) throw err;
+
+  PUBLIC_FOLDER_VARIANTS.forEach(({ filename, width, resizeMode = Jimp.RESIZE_BEZIER }) => {
+    lenna
+      .clone()
+      .resize(width, width, resizeMode) // resize
+      .write(join(PUBLIC_FOLDER, filename)); // save
+  });
+  ICONS_FOLDER_VARIANTS.forEach(({ filename, width, resizeMode = Jimp.RESIZE_BEZIER }) => {
+    lenna
+      .clone()
+      .resize(width, width, resizeMode) // resize
+      .write(join(ICONS_FOLDER, filename)); // save
+  });
+});

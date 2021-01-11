@@ -1,0 +1,23 @@
+{
+  "extends": ["eslint:recommended", "plugin:promise/recommended", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json"
+  },
+  "env": { "browser": true },
+  "plugins": ["@typescript-eslint", "promise", "sonarjs", "prettier"],
+  "rules": {
+    "prefer-const": "error",
+    "no-unused-vars": "off"
+  },
+  "overrides": [
+    {
+      "files": ["src/**/*"],
+      "plugins": ["@typescript-eslint", "@glimmerx", "promise", "sonarjs", "prettier"]
+    },
+    {
+      "files": ["background/**/*", "lib/**/*"],
+      "env": { "browser": true, "webextensions": true }
+    }
+  ]
+}

@@ -8,14 +8,16 @@ module.exports = () => {
   const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
   const entry = {
-    app: './src/index.js',
+    app: './src/index.ts',
+    background: './background/index.ts',
   };
 
   const plugins = [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './index.html',
-      excludeChunks: ['tests'],
+      publicPath: '.',
+      excludeChunks: ['tests', 'background'],
     }),
     new CopyPlugin([{ from: 'public', to: 'public' }]),
   ];
@@ -50,10 +52,7 @@ module.exports = () => {
         },
         {
           test: /\.(png|svg|jpg|gif)$/,
-          loader: 'file-loader',
-          options: {
-            outputPath: 'images',
-          },
+          loader: 'url-loader',
         },
       ],
     },

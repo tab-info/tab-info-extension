@@ -1,0 +1,6 @@
+{
+  "l10nToolbarTooltipTitle": {
+    "message": "Page Meta Info - surfacing embedded info from HTML documents for better developer workflows",
+    "description": "tooltip that the user sees when hovering over the toolbar button"
+  }
+}
