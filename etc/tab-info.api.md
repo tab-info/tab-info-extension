@@ -38,12 +38,24 @@ export const FALLBACK_TAB_COLOR = "#ff0";
 // @alpha
 export const FAVICON_SQUARE_SIZE = 16;
 
+// @alpha
+export function getButtonColorStringFromTabInfo(tabInfo: TabInfo): string;
+
 // @public
 export interface GetPageInfoMessage extends MessageBase<'get_page_info'> {
 }
 
 // @public
 export function guardWithTimeout<T>(promise: PromiseLike<T>, timeout: number): Promise<T>;
+
+// @alpha
+export function makeCanvas(widthOrSize: number, height?: number): {
+    canvas: HTMLCanvasElement;
+    context: CanvasRenderingContext2D;
+};
+
+// @alpha
+export function makeIconFromColor(color: string, w: number, h?: number): ImageData;
 
 // @public
 export type Message = MessageMap[keyof MessageMap];

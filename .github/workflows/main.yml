@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: '*'
   pull_request:
     branches: [ master ]
 
@@ -31,3 +31,15 @@ jobs:
         run: yarn build
       - name: ESLint
         run: yarn lint
+      - name: Public API Surface
+        run: yarn api-surface:ci
+      - name: API report up-to-date
+        run: |
+          echo "API reports that are out of date: " && git diff --exit-code --name-only HEAD 'etc/*.md' && echo "NONE: this PR is ready for review\!"
+          git diff -s --exit-code HEAD -- 'etc/*.md'
+      - name: API docs
+        run: yarn api-docs
+      - name: API docs up-to-date
+        run: |
+          echo "API docs that are out of date: " && git diff --exit-code --name-only HEAD 'docs/*.md' && echo "NONE: this PR is ready for review\!"
+          git diff -s --exit-code HEAD -- 'docs/*.md'

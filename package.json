@@ -20,6 +20,8 @@
     "start": "scripty",
     "test": "scripty",
     "api-docs": "scripty",
+    "api-surface:local": "scripty",
+    "api-surface:ci": "scripty",
     "watch-prod": "scripty",
     "test:code": "scripty",
     "test:types": "scripty",
@@ -137,7 +139,10 @@
       [
         "lint-unordered-list-marker-style",
         "*"
-      ]
+      ],
+      ["lint-maximum-line-length", false],
+      ["lint-no-consecutive-blank-lines", false],
+      ["lint-no-file-name-irregular-characters", "\\.a-zA-Z0-9-_"]
     ]
   }
 }

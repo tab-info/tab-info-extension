@@ -21,9 +21,9 @@ export function makeCanvas(widthOrSize: number, height?: number): { canvas: HTML
 /**
  * Create an ImageData value for a rectangle of a solid color
  * 
- * @param color color specifier (`#f0f` or `rgb(240, 100, 80)`)
- * @param w width
- * @param h height
+ * @param color - color specifier (`#f0f` or `rgb(240, 100, 80)`)
+ * @param w - width
+ * @param h - height
  * @returns 
  * 
  * @alpha
