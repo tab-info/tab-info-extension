@@ -12,7 +12,7 @@ import 'qunit-dom/dist/qunit-dom';
 
 QUnit.start();
 
-(window as any).haltBoot = true;
+haltBoot = true;
 
 const getTestRoot = (): HTMLElement => document.getElementById('qunit-fixture');
 

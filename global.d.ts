@@ -7,3 +7,4 @@ declare module '*.svg' {
 interface Window {
   haltBoot: boolean;
 }
+declare let haltBoot: boolean;
