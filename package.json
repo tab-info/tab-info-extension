@@ -1,8 +1,8 @@
 {
-  "name": "page-meta-info-extension",
+  "name": "tab-info",
   "version": "0.0.1",
   "description": "A chrome extension for surfacing embedded information in web pages in the browser toolbar",
-  "homepage": "https://github.com/mike-north/page-meta-indicator-extension",
+  "homepage": "https://github.com/mike-north/tab-info-extension",
   "author": {
     "name": "Mike North",
     "email": "michael.l.north@gmail.com"
