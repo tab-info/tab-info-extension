@@ -1,8 +1,4 @@
-import { assertExists, assertIsMessage, assertIsPageInfo, assertIsTabWithId } from 'tab-info-lib';
-
-const val1: unknown = 0;
-assertIsMessage(val1);
-val1; // $ExpectType Message
+import { assertExists, assertIsPageInfo } from 'tab-info-lib';
 
 const val2: number | undefined = 0;
 assertExists(val2, 'a number or maybe not');
