@@ -1,2 +1,2 @@
 #! /bin/bash
-eslint src background lib --ext=js,ts --cache
+yarn eslint . --ext .js,.jsx,.ts,.tsx --cache
