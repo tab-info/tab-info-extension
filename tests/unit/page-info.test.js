@@ -1,12 +1,12 @@
 // @ts-check
 /* eslint-disable no-unused-vars */
-import { getColorStringFromTabInfo } from '../../lib/index';
+import { getButtonColorStringFromTabInfo } from '../../lib/index';
 import { q_module, q_test } from '../util';
 
 q_module('PageInfo utility tests', () => {
-  q_test('getColorStringFromTabInfo', async (assert) => {
+  q_test('getButtonColorStringFromTabInfo', async (assert) => {
     assert.equal(
-      getColorStringFromTabInfo({
+      getButtonColorStringFromTabInfo({
         pageTitle: 'my title',
         pageUrl: 'my url',
         buttonColor: '#f00',

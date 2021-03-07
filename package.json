@@ -137,7 +137,10 @@
       [
         "lint-unordered-list-marker-style",
         "*"
-      ]
+      ],
+      ["lint-maximum-line-length", false],
+      ["lint-no-consecutive-blank-lines", false],
+      ["lint-no-file-name-irregular-characters", "\\.a-zA-Z0-9-_"]
     ]
   }
 }
