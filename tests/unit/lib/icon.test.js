@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { makeIconFromColor } from '../../lib/index';
-import { q_module, q_test } from '../util';
+import { makeIconFromColor } from '../../../lib/index';
+import { q_module, q_test } from '../../util';
 
 
 q_module('icon utility tests', () => {
