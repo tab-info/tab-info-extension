@@ -16,6 +16,6 @@
     "noImplicitReturns": true,
     "noImplicitAny": true,
   },
-  "include": ["global.d.ts", "content", "background", "src", "lib"],
+  "include": ["global.d.ts", "content", "background", "src", "lib", "tests", "webpack.config.js", "demo-pages/*"],
   "exclude": ["node_modules", "tmp", "dist", "demo-server"]
 }

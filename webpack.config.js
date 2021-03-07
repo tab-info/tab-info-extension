@@ -4,7 +4,7 @@ const express = require('express');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const webpack = require('webpack');
+const __webpack = require('webpack');
 
 module.exports = () => {
   const IS_PRODUCTION = process.env.NODE_ENV === 'production';
@@ -39,7 +39,7 @@ module.exports = () => {
     );
   }
 
-  /**@type{webpack.Configuration} */
+  /**@type{__webpack.Configuration} */
   const cfg = {
     mode: IS_PRODUCTION ? 'production' : 'development',
     entry,

@@ -14,6 +14,14 @@
   "ignorePatterns": ["dist/**/*"],
   "overrides": [
     {
+      "files": ["webpack.config.js", "demo-pages/*"],
+      "env": { "node": true }
+    },
+    {
+      "files": ["tests/**/*"],
+      "env": { "browser": true,"qunit": true }
+    },
+    {
       "files": ["src/**/*"],
       "env": { "browser": true, "webextensions": true }
     },

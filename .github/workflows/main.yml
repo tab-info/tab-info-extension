@@ -29,3 +29,5 @@ jobs:
         run: yarn
       - name: Build
         run: yarn build
+      - name: ESLint
+        run: eslint . --ext .js,.jsx,.ts,.tsx
