@@ -19,6 +19,7 @@
     "start": "scripty",
     "test": "scripty",
     "watch-prod": "scripty",
+    "test:types": "scripty",
     "test:browsers": "testem ci",
     "test:watch": "testem"
   },
