@@ -1,0 +1,15 @@
+import {
+  RESPONSE_TIMEOUT_THRESHOLD,
+  UPDATE_EVENT_DEBOUNCE_THRESHOLD,
+  TOOLBAR_ICON_SQUARE_SIZE,
+  POPUP_UI_CONTAINER_ELEM,
+  FAVICON_SQUARE_SIZE,
+  FALLBACK_TAB_COLOR,
+} from 'tab-info-lib';
+
+[RESPONSE_TIMEOUT_THRESHOLD]; // $ExpectType number[]
+[UPDATE_EVENT_DEBOUNCE_THRESHOLD]; // $ExpectType number[]
+[TOOLBAR_ICON_SQUARE_SIZE]; // $ExpectType number[]
+[POPUP_UI_CONTAINER_ELEM]; // $ExpectType string[]
+[FAVICON_SQUARE_SIZE]; // $ExpectType number[]
+[FALLBACK_TAB_COLOR]; // $ExpectType string[]

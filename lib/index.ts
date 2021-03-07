@@ -1,3 +1,4 @@
 export * from './types';
-export * from './errors/unreachable';
+export { default as UnreachableError } from './errors/unreachable';
 export * from './promise';
+export * from './constants';
