@@ -31,3 +31,5 @@ jobs:
         run: yarn build
       - name: ESLint
         run: yarn lint
+      - name: Public API Surface
+        run: yarn api-docs
