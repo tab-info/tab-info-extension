@@ -14,8 +14,18 @@
     "noUnusedParameters": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitReturns": true,
-    "noImplicitAny": true,
+    "noImplicitAny": true
   },
-  "include": ["global.d.ts", "content", "background", "src", "lib", "tests", "webpack.config.js", "demo-pages/*"],
+  "include": [
+    "index.ts",
+    "global.d.ts",
+    "content",
+    "background",
+    "src",
+    "lib",
+    "tests",
+    "webpack.config.js",
+    "demo-pages/*"
+  ],
   "exclude": ["node_modules", "tmp", "dist", "demo-server"]
 }
