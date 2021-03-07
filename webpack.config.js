@@ -78,7 +78,7 @@ module.exports = () => {
         'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
       },
       writeToDisk: true,
-      before: function (app, server, compiler) {
+      before: function (app, _server, _compiler) {
         app.use(express.static(path.join(__filename, '..', 'tests', 'demo-pages')));
       },
     },
