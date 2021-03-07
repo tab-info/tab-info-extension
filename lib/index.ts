@@ -4,3 +4,4 @@ export * from './promise';
 export * from './constants';
 export * from './guards';
 export * from './icon';
+export * from './page-info';
