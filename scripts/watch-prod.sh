@@ -1,2 +1,2 @@
 #! /bin/bash
-nodemon --config nodemon.prod.json
+nodemon --config nodemon.prod.json --verbose

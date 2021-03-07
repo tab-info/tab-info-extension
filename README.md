@@ -1,33 +1,75 @@
-# pmi
+# tab-info
 
-This README outlines the details of collaborating on this GlimmerX application.
-A short introduction of this app could easily go here.
+This README outlines the details of collaborating on this browser extension
 
-## Prerequisites
+## Using this extension
+
+The purpose of this extension is to surface meta information about a web application running in a given browser tab, in an easily visible way.
+
+For example, if you had a web app that was configured to run inside a docker container and you had several nearly identical containers running side-by-side, this could help you easily disambiguate between them.
+
+### Encoding information for the extension to discover
+
+All of the information that this extension can display is provided via `<meta>` tags, found within the `<head>` of a web application's HTML.
+
+These follow the following convention
+
+```html
+<meta type="tab-info" name=PROPERTY_NAME content=PROPERTY_VALUE />
+```
+For example, one tag that must be present in order for the extension to activate is
+
+```html
+<meta type="tab-info" name="enabled" content="true"/>
+```
+And if you wanted to color code this extension's button in the browser toolbar
+
+```html
+<meta type="tab-info" name="button-color" content="#a3a" />
+```
+
+### Supported properties
+
+| Name | Type | Description |
+|------|------|-------------|
+|`enabled` | `string`| Must be set to "true" in order to activate the extension |
+|`button-color` | `string` | Used to define the color of the toolbar button (and other UI elements). Examples: `"#ff0"`,`#F0F0F0`, `"rgb(245,120,41)"`|
+|`popup-description` | `string` | Text to be rendered in the popup window, revealed when the user clicks the extension toolbar button.
+
+## Contributing to this project
+
+### Prerequisites
 
 You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
 * [Node.js](https://nodejs.org/) (with NPM)
 * [Yarn](https://yarnpkg.com/en/)
+* [Volta](https://volta.sh/)
 
-## Installation
+### Installation
 
 * `git clone <repository-url>` this repository
-* `cd pmi`
+* `cd tab-info`
 * `yarn`
 
-## Running / Development
+### Running / Development
 
-* `yarn start`
-* Visit your app at [http://localhost:8080](http://localhost:8080).
+* `node demo-pages/index.js` to start an optional demo server, that surfaces pages like [`http://localhost:3001/demo1.html`](http://localhost:3001/demo1.html) for testing
+   * You may wish to run this script in the background
+* `yarn watch-prod`
+* In your [Edge](https://www.microsoft.com/en-us/edge) or Chrome browser, [load the entire project folder as an unpacked extension](https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/extension-sideloading)
+* As you change files int his repo, the project will be rebuilt. You will have to go to [your extensions management page](chrome://extensions) to reload the extension manually each time this happens
 
-### Building
+#### Building
 
 * `yarn build`
 
-## Further Reading / Useful Links
+### Further Reading / Useful Links
 
 * [glimmerx](http://github.com/glimmerjs/glimmer-experimental/)
 * [webpack](https://webpack.js.org/)
 * [babel](https://babeljs.io/docs/en/configuration)
+
+# Legal
+&copy; 2021 LinkedIn
