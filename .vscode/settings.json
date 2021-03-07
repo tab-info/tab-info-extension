@@ -1,6 +1,0 @@
-{
-  "json.schemas": [
-    { "fileMatch": ["nodemon*.json"], "url": "https://json.schemastore.org/nodemon" }
-  ],
-  "eslint.validate": ["TypeScript", "JavaScript"]
-}
