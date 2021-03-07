@@ -8,6 +8,23 @@
 export const ALL_MESSAGE_KEYS: ("content_script_ready" | "get_page_info")[];
 
 // @public
+export function assertExists<T>(val: T | undefined | null, valDescription: string): asserts val is T;
+
+// @public
+export function assertIsMessage(message: unknown): asserts message is Message;
+
+// @public
+export function assertIsMessageBase(message: unknown): asserts message is MessageBase<string>;
+
+// Warning: (ae-incompatible-release-tags) The symbol "assertIsPageInfo" is marked as @public, but its signature references "PageInfo" which is marked as @alpha
+//
+// @public
+export function assertIsPageInfo(arg: unknown): asserts arg is PageInfo;
+
+// @public
+export function assertIsTabWithId(tab: chrome.tabs.Tab): asserts tab is TabWithId;
+
+// @public
 export interface ContentScriptReadyMessage extends MessageBase<'content_script_ready'> {
     // Warning: (ae-incompatible-release-tags) The symbol "pageInfo" is marked as @public, but its signature references "PageInfo" which is marked as @alpha
     //

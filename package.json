@@ -21,6 +21,7 @@
     "test": "scripty",
     "api-docs": "scripty",
     "watch-prod": "scripty",
+    "test:code": "scripty",
     "test:types": "scripty",
     "test:browsers": "testem ci",
     "test:watch": "testem"
