@@ -1,2 +1,2 @@
 #! /bin/bash
-yarn lint && yarn test:browsers
+yarn test:browsers

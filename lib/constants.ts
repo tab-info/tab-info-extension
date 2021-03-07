@@ -49,6 +49,13 @@ export const FAVICON_SQUARE_SIZE = 16;
  * @alpha
  */
 export const FALLBACK_TAB_COLOR = '#ff0';
+/**
+ * The tab color to use if we find that a page indicates 
+ * that this extension should be _disabled_
+ * 
+ * @alpha
+ */
+export const DISABLED_TAB_COLOR = '#ddd';
 
 /**
  * A debouncing threshold used to avoid close-proximity
