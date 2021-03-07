@@ -1,20 +1,11 @@
 import Component, { hbs } from '@glimmerx/component';
-
-import logo from './logo.svg';
+import { PageInfo } from '../lib/types';
 import './App.css';
+import TabInfoWidget from './TabInfoWidget';
 
-export default class App extends Component {
-  logo = logo;
-
+export default class App extends Component<{data: PageInfo}> {
+  
   static template = hbs`
-    <div id="intro">
-      <img src={{this.logo}}/>
-
-      <h1>hello, glimmerx!</h1>
-      <h3>
-        you can get started by editing <code>src/App.js</code>,
-        and run tests by visiting <a href="./tests">/tests</a>
-      </h3>
-    </div>
+    <TabInfoWidget @tabInfo={{@data.tabInfo}} />
   `;
 }
