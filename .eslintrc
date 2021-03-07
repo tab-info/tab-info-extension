@@ -5,18 +5,28 @@
     "project": "tsconfig.json"
   },
   "env": { "browser": true },
-  "plugins": ["@typescript-eslint", "promise", "sonarjs", "prettier"],
+  "plugins": ["@typescript-eslint", "promise", "prettier", "@glimmerx"],
   "rules": {
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^__" }],
     "prefer-const": "error",
-    "no-unused-vars": "off"
+    "@glimmerx/template-vars": "error"
   },
+  "ignorePatterns": ["dist/**/*"],
   "overrides": [
     {
-      "files": ["src/**/*"],
-      "plugins": ["@typescript-eslint", "@glimmerx", "promise", "sonarjs", "prettier"]
+      "files": ["webpack.config.js", "demo-pages/*"],
+      "env": { "node": true }
     },
     {
-      "files": ["background/**/*", "lib/**/*"],
+      "files": ["tests/**/*"],
+      "env": { "browser": true,"qunit": true }
+    },
+    {
+      "files": ["src/**/*"],
+      "env": { "browser": true, "webextensions": true }
+    },
+    {
+      "files": ["content/**/*", "background/**/*", "lib/**/*"],
       "env": { "browser": true, "webextensions": true }
     }
   ]

@@ -1,8 +1,10 @@
 const path = require('path');
 const glob = require('glob');
+const express = require('express');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const __webpack = require('webpack');
 
 module.exports = () => {
   const IS_PRODUCTION = process.env.NODE_ENV === 'production';
@@ -10,6 +12,7 @@ module.exports = () => {
   const entry = {
     app: './src/index.ts',
     background: './background/index.ts',
+    content: './content/index.ts',
   };
 
   const plugins = [
@@ -17,7 +20,7 @@ module.exports = () => {
     new HtmlWebpackPlugin({
       template: './index.html',
       publicPath: '.',
-      excludeChunks: ['tests', 'background'],
+      excludeChunks: ['tests', 'background', 'content'],
     }),
     new CopyPlugin([{ from: 'public', to: 'public' }]),
   ];
@@ -36,9 +39,11 @@ module.exports = () => {
     );
   }
 
-  return {
+  /**@type{__webpack.Configuration} */
+  const cfg = {
     mode: IS_PRODUCTION ? 'production' : 'development',
     entry,
+    devtool: 'inline-nosources-cheap-source-map',
     plugins,
     module: {
       rules: [
@@ -66,6 +71,17 @@ module.exports = () => {
     },
     devServer: {
       contentBase: path.resolve(__dirname, 'dist'),
+      hot: false,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+        'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+      },
+      writeToDisk: true,
+      before: function (app, _server, _compiler) {
+        app.use(express.static(path.join(__filename, '..', 'tests', 'demo-pages')));
+      },
     },
   };
+  return cfg;
 };

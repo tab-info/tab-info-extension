@@ -5,11 +5,17 @@
     "inlineSourceMap": true,
     "inlineSources": true,
     "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": false,
+    "strictPropertyInitialization": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
   },
-  "include": ["global.d.ts", "background", "src", "lib"],
-  "exclude": ["node_modules", "tmp", "dist"]
+  "include": ["global.d.ts", "content", "background", "src", "lib", "tests", "webpack.config.js", "demo-pages/*"],
+  "exclude": ["node_modules", "tmp", "dist", "demo-server"]
 }

@@ -16,7 +16,11 @@
     "scripts": ["dist/background.bundle.js"],
     "persistent": true
   },
-  "browser_action": {
+  "content_scripts": [{
+    "matches": ["https://*/*","http://*/*"],
+    "js": ["dist/content.bundle.js"]
+  }],
+  "page_action": {
     "default_icon": "icons/icon19.png",
     "default_title": "page action demo",
     "default_popup": "dist/index.html"

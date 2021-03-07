@@ -1,6 +1,6 @@
 {
-  "watch": ["lib", "background", "src", "icons", "public"],
+  "watch": ["lib", "content", "background", "src", "logo.png", "manifest.json"],
   "ext": "*",
-  "ignore": ["dist", "node_modules"],
+  "ignore": ["dist", "node_modules","icons", "public/*.png"],
   "exec": "yarn build"
 }

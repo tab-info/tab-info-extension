@@ -1,9 +1,9 @@
-import { module, test, renderComponent } from '../util';
+import { q_module, q_test, renderComponent } from '../util';
 
 import App from '../../src/App';
 
-module('App test', () => {
-  test('it works', async (assert) => {
+q_module('App test', () => {
+  q_test('it works', async (assert) => {
     await renderComponent(App);
 
     assert.dom('h1').containsText('hello, glimmerx!');
