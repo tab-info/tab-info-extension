@@ -20,6 +20,8 @@
     "start": "scripty",
     "test": "scripty",
     "api-docs": "scripty",
+    "api-surface:local": "scripty",
+    "api-surface:ci": "scripty",
     "watch-prod": "scripty",
     "test:code": "scripty",
     "test:types": "scripty",
