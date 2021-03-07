@@ -4,41 +4,43 @@
 
 ```ts
 
-// @public (undocumented)
+// @public
 export const ALL_MESSAGE_KEYS: ("content_script_ready" | "get_page_info")[];
 
-// @public (undocumented)
+// @public
 export interface ContentScriptReadyMessage extends MessageBase<'content_script_ready'> {
+    // Warning: (ae-incompatible-release-tags) The symbol "pageInfo" is marked as @public, but its signature references "PageInfo" which is marked as @alpha
+    //
     // (undocumented)
     pageInfo: PageInfo;
 }
 
-// @public (undocumented)
+// @alpha
 export const FALLBACK_TAB_COLOR = "#ff0";
 
-// @public (undocumented)
+// @alpha
 export const FAVICON_SQUARE_SIZE = 16;
 
-// @public (undocumented)
+// @public
 export interface GetPageInfoMessage extends MessageBase<'get_page_info'> {
 }
 
 // @public
 export function guardWithTimeout<T>(promise: PromiseLike<T>, timeout: number): Promise<T>;
 
-// @public (undocumented)
+// @public
 export type Message = MessageMap[keyof MessageMap];
 
-// @public (undocumented)
+// @public
 export interface MessageBase<K extends string> {
     // (undocumented)
     key: K;
 }
 
-// @public (undocumented)
+// @public
 export type MessageKey = keyof MessageMap;
 
-// @public (undocumented)
+// @public
 export interface MessageMap {
     // (undocumented)
     content_script_ready: ContentScriptReadyMessage;
@@ -46,15 +48,7 @@ export interface MessageMap {
     get_page_info: GetPageInfoMessage;
 }
 
-// @public (undocumented)
-export interface MessageResponseMap {
-    // (undocumented)
-    content_script_ready: 'ok';
-    // (undocumented)
-    get_page_info: PageInfo;
-}
-
-// @public (undocumented)
+// @alpha
 export interface PageInfo {
     // (undocumented)
     enabled: boolean;
@@ -62,13 +56,13 @@ export interface PageInfo {
     tabInfo: TabInfo;
 }
 
-// @public (undocumented)
+// @alpha
 export const POPUP_UI_CONTAINER_ELEM = "#app";
 
-// @public (undocumented)
+// @alpha
 export const RESPONSE_TIMEOUT_THRESHOLD = 1000;
 
-// @public (undocumented)
+// @alpha
 export interface TabInfo {
     // (undocumented)
     buttonColor?: string;
@@ -80,20 +74,20 @@ export interface TabInfo {
     pageUrl: string;
 }
 
-// @public (undocumented)
+// @public
 export type TabWithId = chrome.tabs.Tab & {
     id: number;
 };
 
-// @public (undocumented)
+// @alpha
 export const TOOLBAR_ICON_SQUARE_SIZE = 16;
 
-// @public (undocumented)
+// @public
 export class UnreachableError extends Error {
     constructor(nvr: never, message?: string);
 }
 
-// @public (undocumented)
+// @alpha
 export const UPDATE_EVENT_DEBOUNCE_THRESHOLD = 50;
 
 

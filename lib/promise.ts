@@ -13,9 +13,11 @@
  * })
  * ```
  * 
- * @param promise promise to wrap
- * @param timeout timeout in ms
+ * @param promise - promise to wrap
+ * @param timeout - timeout in ms
  * @returns a new promise, guarded with a timeout
+ * 
+ * @public
  */
 export function guardWithTimeout<T>(promise: PromiseLike<T>, timeout: number): Promise<T> {
   return new Promise<T>((resolve, reject) => {

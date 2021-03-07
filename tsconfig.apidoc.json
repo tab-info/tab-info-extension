@@ -6,5 +6,5 @@
     "declarationDir": "tmp_dts",
     "declaration": true
   },
-  "include": ["index.ts", "lib", "background", "content", "popup"]
+  "include": ["global.d.ts", "index.ts", "lib", "background", "content", "popup"]
 }
