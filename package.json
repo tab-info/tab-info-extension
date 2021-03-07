@@ -36,7 +36,7 @@
     "@glimmerx/eslint-plugin": "^0.4.2",
     "@glimmerx/helper": "0.3.0",
     "@glimmerx/modifier": "0.3.0",
-    "@types/chrome": "^0.0.127",
+    "@types/chrome": "^0.0.133",
     "@types/color": "^3.0.1",
     "@types/debounce": "^1.2.0",
     "@types/debug": "^4.1.5",
@@ -49,6 +49,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
+    "dtslint": "^4.0.7",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-prettier": "^3.3.1",
@@ -127,7 +128,10 @@
         "remark-lint-list-item-indent",
         false
       ],
-      ["lint-unordered-list-marker-style", "*"]
+      [
+        "lint-unordered-list-marker-style",
+        "*"
+      ]
     ]
-  }  
+  }
 }
