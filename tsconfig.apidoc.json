@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+    "outDir": "tmp_out",
+    "declarationDir": "tmp_dts",
+    "declaration": true
+  },
+  "include": ["global.d.ts", "index.ts", "lib", "background", "content", "popup"]
+}
