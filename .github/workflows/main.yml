@@ -4,7 +4,8 @@ name: CI
 
 # Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  schedule:
+    - cron:  '15 2 * * 4' # At 02:15 each Thursday
   push:
     branches: '*'
   pull_request:
