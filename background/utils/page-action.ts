@@ -24,7 +24,7 @@ function disablePageAction(tabId: number,
   pageActionApi: PageActionAPISubset) {
   pageActionApi.setIcon({
     tabId,
-    imageData: makeIconFromColor(DISABLED_TAB_COLOR, TOOLBAR_ICON_SQUARE_SIZE),
+    path: 'icons/icon19.png'
   });
   pageActionApi.hide(tabId, function () {});
 }

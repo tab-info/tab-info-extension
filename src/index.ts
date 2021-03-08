@@ -29,7 +29,6 @@ if (!window.haltBoot) {
   main();
 }
 
-export { getActiveTabInCurrentWindow } from './utils/extension';
-export { default as TabInfoWidget } from './TabInfoWidget';
-export { default as App } from './App';
 export { retreivePageInfoForCurrentTab } from './messages/initiators';
+export { getActiveTabInCurrentWindow } from './utils/extension';
+
