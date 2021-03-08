@@ -4,6 +4,8 @@ node_modules
 tmp/*
 temp/*
 dist
+to_publish
+extension.zip
 
 yarn-error.log
 .eslintcache
