@@ -4,18 +4,8 @@
 
 ```ts
 
-import Component from '@glimmerx/component';
-
 // @public
 export const ALL_MESSAGE_KEYS: ("content_script_ready" | "get_page_info")[];
-
-// @alpha
-export class App extends Component<{
-    data: PageInfo;
-}> {
-    // (undocumented)
-    static template: Component<{}>;
-}
 
 // @public
 export function assertExists<T>(val: T | undefined | null, valDescription: string): asserts val is T;
@@ -125,16 +115,6 @@ export interface TabInfo {
     pageTitle: string;
     // (undocumented)
     pageUrl: string;
-}
-
-// @alpha
-export class TabInfoWidget extends Component<{
-    tabInfo: TabInfo;
-}> {
-    // (undocumented)
-    get bgStyle(): string;
-    // (undocumented)
-    static template: Component<{}>;
 }
 
 // @public
