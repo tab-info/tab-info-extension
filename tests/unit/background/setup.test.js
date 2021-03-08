@@ -1,7 +1,7 @@
 import { setupMessageListeners } from '../../../background/index';
 import { q_module, q_test } from '../../util';
 
-q_module.only('background setup tests', () => {
+q_module('background setup tests', () => {
   q_test('registers correct event listeners', async (assert) => {
     assert.expect(2);
     function addListener(cb) {

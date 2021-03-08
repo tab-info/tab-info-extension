@@ -18,7 +18,7 @@ const DISABLED_COLOR_UINT8_CLAMPED_ARRAY = makeIconFromColor(
   TOOLBAR_ICON_SQUARE_SIZE
 ).data;
 
-q_module.only('background process icon-update tests', () => {
+q_module('background process icon-update tests', () => {
 
   q_test('responds to ENABLED content_script_ready appropriately', async (assert) => {
     assert.expect(11);
