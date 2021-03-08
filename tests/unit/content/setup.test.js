@@ -16,10 +16,7 @@ q_module('content script setup tests', () => {
   });
   q_test('indicates readiness after setup', async (assert) => {
     assert.expect(7);
-    /**
-     *
-     * @param {(...args: any[]) => void} cb
-     */
+
     function addListener(cb) {
       assert.ok(true, 'onMessage.addListener called');
       cb({ key: 'get_page_info' }, null, /**@type {(x: import('../../../lib/types').PageInfo) => void}*/(response) => {
@@ -31,7 +28,7 @@ q_module('content script setup tests', () => {
           assert.equal(response.tabInfo.pageDescription, 'Example description');
       });
     }
-    /** @type {import('../../../content/types').PartialChromeRuntimeApi['onMessage']} */
+
     const partialChromeApi = { addListener };
 
     setupMessageListeners(partialChromeApi, document);
