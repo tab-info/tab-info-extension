@@ -14,6 +14,7 @@
   },
   "scripts": {
     "postinstall": "rimraf node_modules/public-encrypt/test/*.pem",
+    "zip": "scripty",
     "build": "scripty",
     "build:types": "scripty",
     "lint": "scripty",

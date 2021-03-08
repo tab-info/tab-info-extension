@@ -1,5 +1,5 @@
 {
-  "name": "Page Meta Indicator",
+  "name": "Tab Info",
   "version": "0.0.1",
   "manifest_version": 2,
   "description": "Web application meta tag information, rendered in your browser toolbar",
@@ -25,5 +25,5 @@
     "default_title": "page action demo",
     "default_popup": "dist/index.html"
   },
-  "permissions": ["notifications", "tabs", "http://*/*", "https://*/*", "activeTab"]
+  "permissions": ["tabs", "http://*/*", "https://*/*", "activeTab"]
 }
