@@ -15,6 +15,15 @@ async function retrievePageInfo(tabId: number, sendMessage: typeof chrome.tabs.s
   return guardWithTimeout(d.promise, RESPONSE_TIMEOUT_THRESHOLD);
 }
 
+/**
+ * Obtain the {@link PageInfo} for the currently active tab in the currently active window
+ * 
+ * @param sendMessage - the `chrome.tabs.sendMessage` function from the extension API
+ * @param query - the `chrome.tabs.query` function from the extension API
+ * @returns the {@link PageInfo} describing the currently active tab in the currently open window
+ * 
+ * @alpha
+ */
 export async function retreivePageInfoForCurrentTab(sendMessage: typeof chrome.tabs.sendMessage, query: typeof chrome.tabs.query): Promise<PageInfo> {
   const { id } = await getActiveTabInCurrentWindow(query);
   debug('popup pageinfo request about to send');

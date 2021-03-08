@@ -24,7 +24,14 @@ function handleMessage(
   }
 }
 
-
+/**
+ * Setup message listeners on the content script
+ * 
+ * @param onMessage - the `onMessage` portion of the `chrome.runtime` extension API
+ * @param pageActionApi - a subset of the `chrome.pageAction` extension API
+ * 
+ * @alpha
+ */
 function setupMessageListeners(onMessage: typeof chrome.runtime.onMessage ,pageActionApi: PageActionAPISubset) {
   const handler = handleMessage.bind(null,pageActionApi)
   onMessage.addListener((message, sender, sendResponse) => {

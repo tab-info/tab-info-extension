@@ -13,7 +13,13 @@ function styleStringFromButtonColor(buttonColor: string): string {
   return styleParts.map(([k, v]) => `${k}: ${v};`).join(' ');
 }
 
-export default class PageInfoWidget extends Component<{ tabInfo: TabInfo }> {
+/**
+ * The main component in the popup page that renders the information obtained
+ * by the content script.
+ * 
+ * @alpha
+ */
+export default class TabInfoWidget extends Component<{ tabInfo: TabInfo }> {
   get bgStyle() {
     const {
       tabInfo: { buttonColor },
