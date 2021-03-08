@@ -6,6 +6,8 @@ This README outlines the details of collaborating on this browser extension
 
 ## Using this extension
 
+<img width="640" alt="Screen Shot 2021-03-07 at 5 33 29 PM" src="https://user-images.githubusercontent.com/558005/110265034-7ff82b80-7f6f-11eb-82a2-2a2f5ce1abe8.png">
+
 The purpose of this extension is to surface meta information about
 a web application running in a given browser tab, in an easily visible way.
 
