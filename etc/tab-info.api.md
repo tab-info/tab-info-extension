@@ -4,8 +4,18 @@
 
 ```ts
 
+import Component from '@glimmerx/component';
+
 // @public
 export const ALL_MESSAGE_KEYS: ("content_script_ready" | "get_page_info")[];
+
+// @alpha
+export class App extends Component<{
+    data: PageInfo;
+}> {
+    // (undocumented)
+    static template: Component<{}>;
+}
 
 // @public
 export function assertExists<T>(val: T | undefined | null, valDescription: string): asserts val is T;
@@ -33,10 +43,16 @@ export interface ContentScriptReadyMessage extends MessageBase<'content_script_r
 }
 
 // @alpha
+export const DISABLED_TAB_COLOR = "#ddd";
+
+// @alpha
 export const FALLBACK_TAB_COLOR = "#ff0";
 
 // @alpha
 export const FAVICON_SQUARE_SIZE = 16;
+
+// @alpha
+export function getActiveTabInCurrentWindow(query: typeof chrome.tabs.query): Promise<TabWithId>;
 
 // @alpha
 export function getButtonColorStringFromTabInfo(tabInfo: TabInfo): string;
@@ -92,6 +108,14 @@ export const POPUP_UI_CONTAINER_ELEM = "#app";
 export const RESPONSE_TIMEOUT_THRESHOLD = 1000;
 
 // @alpha
+export function retreivePageInfoForCurrentTab(sendMessage: typeof chrome.tabs.sendMessage, query: typeof chrome.tabs.query): Promise<PageInfo>;
+
+// Warning: (ae-forgotten-export) The symbol "PageActionAPISubset" needs to be exported by the entry point index.d.ts
+//
+// @alpha
+export function setupMessageListeners(onMessage: typeof chrome.runtime.onMessage, pageActionApi: PageActionAPISubset): void;
+
+// @alpha
 export interface TabInfo {
     // (undocumented)
     buttonColor?: string;
@@ -101,6 +125,16 @@ export interface TabInfo {
     pageTitle: string;
     // (undocumented)
     pageUrl: string;
+}
+
+// @alpha
+export class TabInfoWidget extends Component<{
+    tabInfo: TabInfo;
+}> {
+    // (undocumented)
+    get bgStyle(): string;
+    // (undocumented)
+    static template: Component<{}>;
 }
 
 // @public

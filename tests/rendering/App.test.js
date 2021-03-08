@@ -3,12 +3,21 @@ import { q_module, q_test, renderComponent } from '../util';
 import App from '../../src/App';
 
 q_module('App test', () => {
-  q_test('it works', async (assert) => {
-    await renderComponent(App);
+  q_test('initial render', async (assert) => {
+    await renderComponent(App, {
+      args: {
+        data: {
+          tabInfo: {
+            pageTitle: 'my page title',
+            pageDescription: 'my page description',
+            buttonColor: '#f00',
+          },
+        },
+      },
+    });
 
-    assert.dom('h1').containsText('hello, glimmerx!');
-    assert.dom('h3').containsText('you can get started by editing src/App.js');
-
-    assert.dom('img').exists();
+    assert.dom('#intro').hasAttribute('style', 'background-color: #f00; color: white;');
+    assert.dom('h1').containsText('my page title');
+    assert.dom('h3').containsText('my page description');
   });
 });

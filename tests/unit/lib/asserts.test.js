@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { assertExists, assertIsMessageBase, assertIsPageInfo, PageInfo } from '../../lib/index';
-import { q_module, q_test } from '../util';
+import { assertExists, assertIsMessageBase, assertIsPageInfo, PageInfo } from '../../../lib/index';
+import { q_module, q_test } from '../../util';
 
 
 q_module('assertion tests', () => {

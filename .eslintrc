@@ -11,7 +11,8 @@
     "prefer-const": "error",
     "@glimmerx/template-vars": "error"
   },
-  "ignorePatterns": ["dist/**/*"],
+  "globals": {"haltBoot": "writable"},
+  "ignorePatterns": ["dist/**/*", "**/*.d.ts"],
   "overrides": [
     {
       "files": ["webpack.config.js", "demo-pages/*"],
@@ -19,12 +20,12 @@
     },
     {
       "files": ["tests/**/*"],
-      "env": { "browser": true,"qunit": true }
+      "env": { "browser": true, "qunit": true }
     },
     {
       "files": ["tests/types/**/*"],
       "env": { "browser": true },
-      "rules": {"no-unused-vars": 0}
+      "rules": { "no-unused-vars": 0 }
     },
     {
       "files": ["src/**/*"],
