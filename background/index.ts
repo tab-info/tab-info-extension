@@ -40,7 +40,7 @@ function setupMessageListeners(onMessage: typeof chrome.runtime.onMessage ,pageA
   });
 }
 
-if (!haltBoot) {
+if (!window.haltBoot) {
   setupMessageListeners(chrome.runtime.onMessage, chrome.pageAction);
 }
 
