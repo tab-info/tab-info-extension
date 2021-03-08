@@ -1,4 +1,4 @@
-import { DISABLED_TAB_COLOR, TOOLBAR_ICON_SQUARE_SIZE } from '../../lib/constants';
+import { TOOLBAR_ICON_SQUARE_SIZE } from '../../lib/constants';
 import { makeIconFromColor } from '../../lib/icon';
 import { getButtonColorStringFromTabInfo } from '../../lib/page-info';
 import { PageInfo, TabInfo } from '../../lib/types';
