@@ -48,7 +48,7 @@ async function main(chromeApi: PartialChromeRuntimeApi, api: PartialDocumentApi)
   await alertBackgroundScriptOfReadiness(chromeApi.sendMessage, api);
 }
 
-if (!haltBoot) main(chrome.runtime, document);
+if (!window.haltBoot) main(chrome.runtime, document);
 
 export {
   setupMessageListeners,

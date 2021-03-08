@@ -25,7 +25,7 @@ async function main() {
   await bootUI(pageInfo);
   debug('component boot complete');
 }
-if (!haltBoot) {
+if (!window.haltBoot) {
   main();
 }
 
