@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { setupMessageListeners } from '../../../background/index';
 import {
-  DISABLED_TAB_COLOR,
   FALLBACK_TAB_COLOR,
-  TOOLBAR_ICON_SQUARE_SIZE,
+  TOOLBAR_ICON_SQUARE_SIZE
 } from '../../../lib/constants';
 import { makeIconFromColor } from '../../../lib/icon';
 import { q_module, q_test } from '../../util';
