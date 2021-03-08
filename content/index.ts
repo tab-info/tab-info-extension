@@ -43,7 +43,7 @@ function setupMessageListeners(
 
 async function main(chromeApi: PartialChromeRuntimeApi, api: PartialDocumentApi) {
   if (!api) throw new Error('null api');
-  updateFaviconBasedOnCurrentPageInfo(document.head.appendChild, api);
+  updateFaviconBasedOnCurrentPageInfo(api);
   setupMessageListeners(chromeApi.onMessage, api);
   await alertBackgroundScriptOfReadiness(chromeApi.sendMessage, api);
 }

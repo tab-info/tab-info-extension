@@ -43,8 +43,12 @@ module.exports = () => {
   const cfg = {
     mode: IS_PRODUCTION ? 'production' : 'development',
     entry,
-    devtool: 'inline-nosources-cheap-source-map',
+    devtool: 'inline-cheap-source-map',
     plugins,
+    performance: {
+      maxAssetSize: 400000,
+      maxEntrypointSize: 400000,
+    },
     module: {
       rules: [
         {
