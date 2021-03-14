@@ -1,8 +1,12 @@
 # tab-info
 
-[![CI](https://github.com/tab-info/tab-info-extension/actions/workflows/main.yml/badge.svg)](https://github.com/tab-info/tab-info-extension/actions/workflows/main.yml)
+[![CI](https://github.com/tab-info/tab-info-extension/actions/workflows/main.yml/badge.svg)](https://github.com/tab-info/tab-info-extension/actions/workflows/main.yml) 
 
 This README outlines the details of collaborating on this browser extension
+
+## Installation
+
+[Install via the chrome web store](https://chrome.google.com/webstore/detail/tab-info/ilolpcmocmagkaenkclmbjpbnbplgofc)
 
 ## Using this extension
 
