@@ -4,6 +4,8 @@
 
 ## tab-info package
 
+A chrome extension for surfacing web application metadata more noticably in your browser's toolbar
+
 ## Classes
 
 |  Class | Description |
@@ -19,6 +21,7 @@
 |  [assertIsMessageBase(message)](./tab-info.assertismessagebase.md) | Assert whether a value is of type [MessageBase](./tab-info.messagebase.md)<!-- -->. |
 |  [assertIsPageInfo(arg)](./tab-info.assertispageinfo.md) | Assert whether an unknown value is a <code>PageInfo</code> object |
 |  [assertIsTabWithId(tab)](./tab-info.assertistabwithid.md) | Assert for the presence of a browser tab's numeric <code>id</code> property |
+|  [getPageInfo(documentApi)](./tab-info.getpageinfo.md) | Create a [PageInfo](./tab-info.pageinfo.md) object based on the content of the current tab |
 |  [guardWithTimeout(promise, timeout)](./tab-info.guardwithtimeout.md) | "Wrap" a promise in a timeout, to ensure that it doesn't "hang" forever in a perpetually pending state. |
 
 ## Interfaces
@@ -29,6 +32,8 @@
 |  [GetPageInfoMessage](./tab-info.getpageinfomessage.md) | A message sent \*to\* the content script by either the background script or popup frame, as a request to respond with a <code>PageInfo</code> value |
 |  [MessageBase](./tab-info.messagebase.md) | A base class for messages sent between the three actors in this extension (popup, background thread, content script)<!-- -->Each message should have a unique key, so that we can identify them easily and handle them appropriately |
 |  [MessageMap](./tab-info.messagemap.md) | A mapping of message keys to the types that define their entire shape |
+|  [PageInfo](./tab-info.pageinfo.md) | A wrapper around the [TabInfo](./tab-info.tabinfo.md) object that allows us to capture an enabled/disabled state |
+|  [TabInfo](./tab-info.tabinfo.md) | Information about content rendered within a browser tab<!-- -->This is provided to the extension's popup UI, for presentation to the user |
 
 ## Variables
 
@@ -40,6 +45,11 @@
 
 |  Type Alias | Description |
 |  --- | --- |
+|  [BackgroundChromeRuntimeOnMessageAPI](./tab-info.backgroundchromeruntimeonmessageapi.md) | The subset of the <code>chrome.runtime.onMessage</code> extension API that the background script makes use of |
+|  [BackgroundPageActionAPI](./tab-info.backgroundpageactionapi.md) | The subset of the <code>chrome.pageAction</code> that the background script makes use of |
+|  [ContentChromeRuntimeAPI](./tab-info.contentchromeruntimeapi.md) | The subset of the <code>chrome.runtime</code> extension API that the content script makes use of |
+|  [ContentChromeRuntimeOnMessageAPI](./tab-info.contentchromeruntimeonmessageapi.md) | The subset of the <code>chrome.runtime.onMessage</code> extension API that the content script makes use of |
+|  [ContentDocumentAPI](./tab-info.contentdocumentapi.md) | The subset of the <code>document</code> DOM API that the content script makes use of |
 |  [Message](./tab-info.message.md) | A type that matches any valid message payload |
 |  [MessageKey](./tab-info.messagekey.md) | A type that matches any valid message key |
 |  [TabWithId](./tab-info.tabwithid.md) | A browser tab whose <code>id</code> property has already been determined to exist |
