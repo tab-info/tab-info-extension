@@ -2,7 +2,7 @@
  * @packageDocumentation A chrome extension for surfacing web application metadata
  * more noticably in your browser's toolbar 
  * 
- * {@link see more in the chrome web store https://chrome.google.com/webstore/detail/tab-info/ilolpcmocmagkaenkclmbjpbnbplgofc}
+ * {@link https://chrome.google.com/webstore/detail/tab-info/ilolpcmocmagkaenkclmbjpbnbplgofc | see more in the chrome web store }
  */
 
 export * from './background/index';
