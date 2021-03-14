@@ -20,16 +20,19 @@ function styleStringFromButtonColor(buttonColor: string): string {
  * @alpha
  */
 export default class TabInfoWidget extends Component<{ tabInfo: TabInfo }> {
-  get bgStyle() {
+  /**
+   * Dynamic style information, based in part on {@link tab-info#TabInfo}'s `buttonColor` property
+   */
+  get styleString() {
     const {
       tabInfo: { buttonColor },
     } = this.args;
     if (buttonColor) return styleStringFromButtonColor(buttonColor);
     return '';
   }
-
+  
   static template = hbs`
-    <div id="intro" style={{this.bgStyle}}>
+    <div id="intro" style={{this.styleString}}>
       <h1>
         {{@tabInfo.pageTitle}}
       </h1>

@@ -4,8 +4,21 @@
 
 ```ts
 
+import Component from '@glimmerx/component';
+
+// @alpha
+export function alertBackgroundScriptOfReadiness(sendMessage: SendMessageFn, api: ContentDocumentAPI): Promise<void>;
+
 // @public
 export const ALL_MESSAGE_KEYS: ("content_script_ready" | "get_page_info")[];
+
+// @alpha
+export class App extends Component<{
+    data: PageInfo;
+}> {
+    // (undocumented)
+    static template: Component<{}>;
+}
 
 // @public
 export function assertExists<T>(val: T | undefined | null, valDescription: string): asserts val is T;
@@ -16,8 +29,6 @@ export function assertIsMessage(message: unknown): asserts message is Message;
 // @public
 export function assertIsMessageBase(message: unknown): asserts message is MessageBase<string>;
 
-// Warning: (ae-incompatible-release-tags) The symbol "assertIsPageInfo" is marked as @public, but its signature references "PageInfo" which is marked as @alpha
-//
 // @public
 export function assertIsPageInfo(arg: unknown): asserts arg is PageInfo;
 
@@ -25,9 +36,24 @@ export function assertIsPageInfo(arg: unknown): asserts arg is PageInfo;
 export function assertIsTabWithId(tab: chrome.tabs.Tab): asserts tab is TabWithId;
 
 // @public
+export type BackgroundChromeRuntimeOnMessageAPI = Pick<typeof chrome.runtime.onMessage, 'addListener'>;
+
+// @public
+export type BackgroundPageActionAPI = Pick<typeof chrome.pageAction, 'show' | 'setIcon' | 'hide'>;
+
+// @public
+export type ContentChromeRuntimeAPI = Pick<typeof chrome.runtime, 'sendMessage'> & {
+    onMessage: ContentChromeRuntimeOnMessageAPI;
+};
+
+// @public
+export type ContentChromeRuntimeOnMessageAPI = Pick<typeof chrome.runtime.onMessage, 'addListener'>;
+
+// @public
+export type ContentDocumentAPI = Pick<typeof document, 'querySelectorAll' | 'querySelector' | 'location' | 'title' | 'head'>;
+
+// @public
 export interface ContentScriptReadyMessage extends MessageBase<'content_script_ready'> {
-    // Warning: (ae-incompatible-release-tags) The symbol "pageInfo" is marked as @public, but its signature references "PageInfo" which is marked as @alpha
-    //
     // (undocumented)
     pageInfo: PageInfo;
 }
@@ -46,6 +72,9 @@ export function getActiveTabInCurrentWindow(query: typeof chrome.tabs.query): Pr
 
 // @alpha
 export function getButtonColorStringFromTabInfo(tabInfo: TabInfo): string;
+
+// @public
+export function getPageInfo(documentApi: ContentDocumentAPI): Promise<PageInfo>;
 
 // @public
 export interface GetPageInfoMessage extends MessageBase<'get_page_info'> {
@@ -83,11 +112,9 @@ export interface MessageMap {
     get_page_info: GetPageInfoMessage;
 }
 
-// @alpha
+// @public
 export interface PageInfo {
-    // (undocumented)
     enabled: boolean;
-    // (undocumented)
     tabInfo: TabInfo;
 }
 
@@ -100,21 +127,33 @@ export const RESPONSE_TIMEOUT_THRESHOLD = 1000;
 // @alpha
 export function retreivePageInfoForCurrentTab(sendMessage: typeof chrome.tabs.sendMessage, query: typeof chrome.tabs.query): Promise<PageInfo>;
 
-// Warning: (ae-forgotten-export) The symbol "PageActionAPISubset" needs to be exported by the entry point index.d.ts
-//
 // @alpha
-export function setupMessageListeners(onMessage: typeof chrome.runtime.onMessage, pageActionApi: PageActionAPISubset): void;
+export type SendMessageFn = (message: {
+    key: 'content_script_ready';
+    pageInfo: PageInfo;
+}, responseCallback?: ((response: any) => void) | undefined) => void;
 
 // @alpha
+export function setupBackgroundMessageListeners(onMessage: BackgroundChromeRuntimeOnMessageAPI, pageActionApi: BackgroundPageActionAPI): void;
+
+// @alpha
+export function setupContentMessageListeners(onMessage: ContentChromeRuntimeOnMessageAPI, documentApi: ContentDocumentAPI): void;
+
+// @public
 export interface TabInfo {
-    // (undocumented)
     buttonColor?: string;
-    // (undocumented)
     pageDescription?: string;
-    // (undocumented)
     pageTitle: string;
-    // (undocumented)
     pageUrl: string;
+}
+
+// @alpha
+export class TabInfoWidget extends Component<{
+    tabInfo: TabInfo;
+}> {
+    get styleString(): string;
+    // (undocumented)
+    static template: Component<{}>;
 }
 
 // @public
@@ -133,7 +172,8 @@ export class UnreachableError extends Error {
 // @alpha
 export const UPDATE_EVENT_DEBOUNCE_THRESHOLD = 50;
 
+// @alpha
+export function updateFaviconBasedOnCurrentPageInfo(documentApi: ContentDocumentAPI): Promise<void>;
 
-// (No @packageDocumentation comment for this package)
 
 ```

@@ -1,12 +1,12 @@
 import { ContentScriptReadyMessage } from '../../lib/types';
-import { PageActionAPISubset } from '../types';
+import { BackgroundPageActionAPI } from '../types';
 import { actOnPageInfoForTab } from '../utils/page-action';
 
 export function handleContentScriptReadyMessage(
   message: ContentScriptReadyMessage,
   sender: chrome.runtime.MessageSender,
   sendResponse: (_arg: 'ok') => void,
-  pageActionApi: PageActionAPISubset
+  pageActionApi: BackgroundPageActionAPI
 ) {
   const { tab: senderTab } = sender;
   if (!senderTab)

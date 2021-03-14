@@ -8,5 +8,5 @@
 
 |  Package | Description |
 |  --- | --- |
-|  [tab-info](./tab-info.md) |  |
+|  [tab-info](./tab-info.md) | A chrome extension for surfacing web application metadata more noticably in your browser's toolbar |
 

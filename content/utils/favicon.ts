@@ -1,6 +1,6 @@
 import { FAVICON_SQUARE_SIZE } from '../../lib/constants';
 import { makeCanvas } from '../../lib/icon';
-import { PartialDocumentApi } from '../types';
+import { ContentDocumentAPI } from '../types';
 import { getPageInfo } from './page-info';
 
 function createFaviconLink(imageData: string) {
@@ -13,7 +13,7 @@ function createFaviconLink(imageData: string) {
 
 export function setFaviconColor(
   buttonColor: string,
-  partialApi: PartialDocumentApi
+  partialApi: ContentDocumentAPI
 ): void {
   const { canvas, context } = makeCanvas(FAVICON_SQUARE_SIZE);
 
@@ -25,12 +25,19 @@ export function setFaviconColor(
   partialApi.head.appendChild(favIcon);
 }
 
-export function updateFaviconBasedOnCurrentPageInfo(
-  partialApi: PartialDocumentApi
-) {
-  const pageInfo = getPageInfo(partialApi);
+/**
+ * Examine the current page's metadata and update the favicon accordingly
+ * 
+ * @param documentApi - Partial `document` DOM API
+ * 
+ * @alpha
+ */
+export async function updateFaviconBasedOnCurrentPageInfo(
+  documentApi: ContentDocumentAPI
+): Promise<void> {
+  const pageInfo = await getPageInfo(documentApi);
   const buttonColor = pageInfo.tabInfo.buttonColor;
   if (buttonColor) {
-    setFaviconColor(buttonColor, partialApi);
+    setFaviconColor(buttonColor, documentApi);
   }
 }

@@ -17,5 +17,5 @@ export interface ContentScriptReadyMessage extends MessageBase<'content_script_r
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [pageInfo](./tab-info.contentscriptreadymessage.pageinfo.md) | PageInfo |  |
+|  [pageInfo](./tab-info.contentscriptreadymessage.pageinfo.md) | [PageInfo](./tab-info.pageinfo.md) |  |
 

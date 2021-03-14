@@ -4,12 +4,26 @@
  * This is provided to the extension's popup UI, for presentation
  * to the user
  *
- * @alpha
+ * @public
  */
 export interface TabInfo {
+  /**
+   * The innerText of the `<title>` element
+   */
   pageTitle: string;
+  /**
+   * The innerText of the `<meta type="description">` element
+   */
   pageDescription?: string;
+  /**
+   * The URL of the page
+   */
   pageUrl: string;
+  /**
+   * Button color
+   * @example
+   * "#ff0"
+   */
   buttonColor?: string;
 }
 /**
@@ -17,10 +31,16 @@ export interface TabInfo {
  * that allows us to capture an enabled/disabled
  * state
  *
- * @alpha
+ * @public
  */
 export interface PageInfo {
+  /**
+   * Whether the extension should be enabled at all for the current tab
+   */
   enabled: boolean;
+  /**
+   * Information about the tab's current contents
+   */
   tabInfo: TabInfo;
 }
 
