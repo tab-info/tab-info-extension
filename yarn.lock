@@ -1410,13 +1410,12 @@
     "@glimmer/util" "0.73.0"
     "@glimmer/validator" "0.73.0"
 
-"@glimmer/modifier@2.0.0-beta.11":
-  version "2.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@glimmer/modifier/-/modifier-2.0.0-beta.11.tgz#a78ef94b533b2566aa12493463da9b0c4efd83dc"
-  integrity sha512-Be6Z8D1FOmjal5B3BP9NV95CjtcPmEswtzY64b79MHLKPS1vAXVZT+8VBI3yZUxDIFvcBnZjfvma0hqUxaTCNA==
+"@glimmer/modifier@2.0.0-beta.12":
+  version "2.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/@glimmer/modifier/-/modifier-2.0.0-beta.12.tgz#6b7861ffa5417068cc79a4d318427543d9e7f740"
+  integrity sha512-RtQs6Kb+FvuNI/Lje0mDxrf7iC3nq/KYcAvhiCv3Tjv8cpNz6rem+SzPqcRxcKRisd12zaTQSoFZ6J+5A6GNPg==
   dependencies:
-    "@glimmer/interfaces" "0.62.4"
-    "@simple-dom/interface" "^1.4.0"
+    "@glimmer/runtime" "0.73.0"
 
 "@glimmer/opcode-compiler@0.62.4":
   version "0.62.4"
@@ -1689,13 +1688,13 @@
     "@glimmerx/core" "0.3.0"
     ember-cli-babel "^7.18.0"
 
-"@glimmerx/modifier@0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@glimmerx/modifier/-/modifier-0.3.0.tgz#e4859faaba08ba39be899ccc90437e683ad7ab29"
-  integrity sha512-JIXUKLtPWNJbLyuO4PKglGcrWHwNnamByVb7BKwFuhU/on5dAMtKKgIOgz5S/3IwBUy6SCBpicvo4cJ2ESQQFg==
+"@glimmerx/modifier@0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@glimmerx/modifier/-/modifier-0.4.2.tgz#798a058711c4fd2f434fa7263bdfe5ce387dbaf9"
+  integrity sha512-ekUwbmaAHNT6g8LQAAV3V027h17lyFB27a7fMu+h7xrkoZaJPorv2WrueBbcvgRwH6mYDb0J5GnU2dLMLsdPsw==
   dependencies:
-    "@glimmer/core" "2.0.0-beta.11"
-    "@glimmer/modifier" "2.0.0-beta.11"
+    "@glimmer/core" "2.0.0-beta.12"
+    "@glimmer/modifier" "2.0.0-beta.12"
     ember-cli-babel "^7.18.0"
 
 "@handlebars/parser@^1.1.0":
