@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
-import { setupMessageListeners } from '../../../background/index';
+// @ts-check
+import { setupBackgroundMessageListeners } from '../../../background/index';
 import {
   FALLBACK_TAB_COLOR,
   TOOLBAR_ICON_SQUARE_SIZE
@@ -42,7 +42,12 @@ q_module('background process icon-update tests', () => {
       assert.ok(true, 'onMessage.addListener called');
     }
 
+    /**
+     * 
+     * @param {{tabId: number, imageData?: ImageData | { [index: number]: ImageData; }}} param0 
+     */
     function setIcon({ tabId, imageData }) {
+      if (!(imageData instanceof ImageData)) throw new Error('Invalid image');
       assert.ok(true, 'chrome.pageAction.setIcon was called upon receipt of message');
       assert.equal(tabId, -1, 'chrome.pageAction.setIcon was called with correct tabId');
       assert.equal(
@@ -71,10 +76,10 @@ q_module('background process icon-update tests', () => {
       assert.equal(tabId, -1, 'chrome.pageAction.show was passed the correct tabId');
       cb();
     }
-    function hide(...args) {
+    function hide() {
       assert.ok(false, 'chrome.pageAction.hide should not be called upon receipt of message');
     }
-    setupMessageListeners(
+    setupBackgroundMessageListeners(
       { addListener },
       {
         show,
@@ -108,8 +113,12 @@ q_module('background process icon-update tests', () => {
       }, 0);
       assert.ok(true, 'onMessage.addListener called');
     }
-
-    function setIcon({ tabId, imageData }) {
+    /**
+     * 
+     * @param {{tabId: number, imageData?: ImageData | { [index: number]: ImageData; }}} param0 
+     */
+     function setIcon({ tabId, imageData }) {
+      if (!(imageData instanceof ImageData)) throw new Error('Invalid image');
       assert.ok(true, 'chrome.pageAction.setIcon was called upon receipt of message');
       assert.equal(tabId, -1, 'chrome.pageAction.setIcon was called with correct tabId');
       assert.equal(
@@ -138,10 +147,10 @@ q_module('background process icon-update tests', () => {
       assert.equal(tabId, -1, 'chrome.pageAction.show was passed the correct tabId');
       cb();
     }
-    function hide(...args) {
+    function hide() {
       assert.ok(false, 'chrome.pageAction.hide should not be called upon receipt of message');
     }
-    setupMessageListeners(
+    setupBackgroundMessageListeners(
       { addListener },
       {
         show,

@@ -16,11 +16,11 @@ async function retrievePageInfo(tabId: number, sendMessage: typeof chrome.tabs.s
 }
 
 /**
- * Obtain the {@link PageInfo} for the currently active tab in the currently active window
+ * Obtain the {@link tab-info#PageInfo} for the currently active tab in the currently active window
  * 
  * @param sendMessage - the `chrome.tabs.sendMessage` function from the extension API
  * @param query - the `chrome.tabs.query` function from the extension API
- * @returns the {@link PageInfo} describing the currently active tab in the currently open window
+ * @returns the {@link tab-info#PageInfo} describing the currently active tab in the currently open window
  * 
  * @alpha
  */

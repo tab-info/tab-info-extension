@@ -20,5 +20,5 @@ export declare function assertIsPageInfo(arg: unknown): asserts arg is PageInfo;
 
 <b>Returns:</b>
 
-asserts arg is PageInfo
+asserts arg is [PageInfo](./tab-info.pageinfo.md)
 

@@ -2,12 +2,12 @@ import { TOOLBAR_ICON_SQUARE_SIZE } from '../../lib/constants';
 import { makeIconFromColor } from '../../lib/icon';
 import { getButtonColorStringFromTabInfo } from '../../lib/page-info';
 import { PageInfo, TabInfo } from '../../lib/types';
-import { PageActionAPISubset } from '../types';
+import { BackgroundPageActionAPI } from '../types';
 
 function enablePageAction(
   tabId: number,
   tabInfo: TabInfo,
-  pageActionApi: PageActionAPISubset
+  pageActionApi: BackgroundPageActionAPI
 ) {
   pageActionApi.show(tabId, function () {
     pageActionApi.setIcon({
@@ -21,7 +21,7 @@ function enablePageAction(
 }
 
 function disablePageAction(tabId: number,
-  pageActionApi: PageActionAPISubset) {
+  pageActionApi: BackgroundPageActionAPI) {
   pageActionApi.setIcon({
     tabId,
     path: 'icons/icon19.png'
@@ -32,7 +32,7 @@ function disablePageAction(tabId: number,
 export function actOnPageInfoForTab(
   tabId: number,
   pageInfo: PageInfo,
-  pageActionApi: PageActionAPISubset
+  pageActionApi: BackgroundPageActionAPI
 ) {
   const isEnabledForPage = pageInfo.enabled === true;
   if (isEnabledForPage) {

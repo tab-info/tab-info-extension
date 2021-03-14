@@ -3,10 +3,10 @@ import { assertIsMessage } from '../lib/guards';
 import { Message } from '../lib/types';
 import { debug } from '../src/utils/logging';
 import { handleContentScriptReadyMessage } from './messages/handlers';
-import { PageActionAPISubset } from './types';
+import { BackgroundChromeRuntimeOnMessageAPI, BackgroundPageActionAPI } from './types';
 
 function handleMessage(
-  pageActionApi: PageActionAPISubset,
+  pageActionApi: BackgroundPageActionAPI,
   message: Message,
   sender: chrome.runtime.MessageSender,
   sendResponse: (_resp?: any) => void
@@ -26,14 +26,17 @@ function handleMessage(
 
 /**
  * Setup message listeners on the content script
- * 
+ *
  * @param onMessage - the `onMessage` portion of the `chrome.runtime` extension API
  * @param pageActionApi - a subset of the `chrome.pageAction` extension API
- * 
+ *
  * @alpha
  */
-function setupMessageListeners(onMessage: typeof chrome.runtime.onMessage ,pageActionApi: PageActionAPISubset) {
-  const handler = handleMessage.bind(null,pageActionApi)
+function setupBackgroundMessageListeners(
+  onMessage: BackgroundChromeRuntimeOnMessageAPI,
+  pageActionApi: BackgroundPageActionAPI
+) {
+  const handler = handleMessage.bind(null, pageActionApi);
   onMessage.addListener((message, sender, sendResponse) => {
     assertIsMessage(message);
     handler(message, sender, sendResponse);
@@ -41,7 +44,8 @@ function setupMessageListeners(onMessage: typeof chrome.runtime.onMessage ,pageA
 }
 
 if (!window.haltBoot) {
-  setupMessageListeners(chrome.runtime.onMessage, chrome.pageAction);
+  setupBackgroundMessageListeners(chrome.runtime.onMessage, chrome.pageAction);
 }
 
-export { setupMessageListeners};
+export { BackgroundChromeRuntimeOnMessageAPI, BackgroundPageActionAPI } from './types';
+export { setupBackgroundMessageListeners };
