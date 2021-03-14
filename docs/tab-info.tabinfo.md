@@ -22,4 +22,6 @@ export interface TabInfo
 |  [pageDescription?](./tab-info.tabinfo.pagedescription.md) | string | <i>(Optional)</i> The innerText of the <code>&lt;meta type=&quot;description&quot;&gt;</code> element |
 |  [pageTitle](./tab-info.tabinfo.pagetitle.md) | string | The innerText of the <code>&lt;title&gt;</code> element |
 |  [pageUrl](./tab-info.tabinfo.pageurl.md) | string | The URL of the page |
+|  [popupDescription?](./tab-info.tabinfo.popupdescription.md) | string | <i>(Optional)</i> The description to be rendered in the popup |
+|  [popupTitle?](./tab-info.tabinfo.popuptitle.md) | string | <i>(Optional)</i> The title to be rendered in the popup |
 

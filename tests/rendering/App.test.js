@@ -16,8 +16,8 @@ q_module('App test', () => {
       },
     });
 
-    assert.dom('#intro').hasAttribute('style', 'background-color: #f00; color: white;');
+    assert.dom('#popup-content').hasAttribute('style', 'background-color: #f00; color: white;');
     assert.dom('h1').containsText('my page title');
-    assert.dom('h3').containsText('my page description');
+    assert.dom('.container').containsText('my page description');
   });
 });
