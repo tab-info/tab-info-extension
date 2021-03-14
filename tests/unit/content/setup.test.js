@@ -1,5 +1,5 @@
 // @ts-check
-import { setupMessageListeners } from '../../../content/index';
+import { setupContentMessageListeners } from '../../../content/index';
 import { q_module, q_test } from '../../util';
 
 q_module('content script setup tests', () => {
@@ -9,10 +9,10 @@ q_module('content script setup tests', () => {
       assert.ok(true, 'onMessage.addListener called');
       assert.equal(typeof cb, 'function', 'onMessage.addListener was passed a function');
     }
-    /** @type {import('../../../content/types').PartialChromeRuntimeApi['onMessage']} */
+    /** @type {import('../../../content/types').ContentChromeRuntimeOnMessageAPI} */
     const partialChromeApi = { addListener };
 
-    setupMessageListeners(partialChromeApi, document);
+    setupContentMessageListeners(partialChromeApi, document);
   });
   q_test('indicates readiness after setup', async (assert) => {
     assert.expect(7);
@@ -31,6 +31,6 @@ q_module('content script setup tests', () => {
 
     const partialChromeApi = { addListener };
 
-    setupMessageListeners(partialChromeApi, document);
+    setupContentMessageListeners(partialChromeApi, document);
   });
 });

@@ -1,31 +1,49 @@
 import { Dict } from '@mike-north/types';
-import { PageInfo } from '../../lib/types';
-import { PartialDocumentApi } from '../types';
+import { PageInfo, TabInfo } from '../../lib/types';
+import { ContentDocumentAPI } from '../types';
 
-export function getPageInfo(api: PartialDocumentApi): PageInfo {
-  const rawTabInfo = [...api.querySelectorAll('[type="tab-info"]')]
-    .map((item: Element & { name?: string; content?: string }) => {
+function getRawTabInfoMetadata(api: ContentDocumentAPI): Dict<string> {
+  const tags = [...api.querySelectorAll('[type="tab-info"]')].map(
+    (item: Element & { name?: string; content?: string }) => {
       const { name, content } = item;
       return { name, content };
-    })
-    .reduce((dict, item) => {
-      dict[item.name || ''] = item.content;
-      return dict;
-    }, {} as Dict<string>);
-  const descriptionElement = api.querySelector('meta[name="description"]');
+    }
+  );
+
+  return tags.reduce((dict, item) => {
+    dict[item.name || ''] = item.content;
+    return dict;
+  }, {} as Dict<string>);
+}
+
+/**
+ * Create a {@link tab-info#PageInfo} object based on the content of the current tab
+ * @param documentApi - partial `document` DOM API
+ * @returns 
+ * 
+ * @public
+ */
+export async function getPageInfo(documentApi: ContentDocumentAPI): Promise<PageInfo> {
+  const rawTabInfo = getRawTabInfoMetadata(documentApi);
+  // Meta keyword description
+  const descriptionElement = documentApi.querySelector('meta[name="description"]');
+
+  // Assemble TabInfo Parts
   const pageDescription = descriptionElement
     ? '' + descriptionElement.getAttribute('content')
     : undefined;
-  const pageTitle = api.title;
-  const pageUrl = api.location.toString();
+  const pageTitle = documentApi.title;
+  const pageUrl = documentApi.location.toString();
   const buttonColor = rawTabInfo['button-color'];
+  const tabInfo: TabInfo = {
+    pageTitle,
+    pageDescription,
+    pageUrl,
+    buttonColor,
+  };
+  // Return the PageInfo
   return {
     enabled: rawTabInfo.enabled === 'true',
-    tabInfo: {
-      pageTitle,
-      pageDescription,
-      pageUrl,
-      buttonColor
-    },
+    tabInfo,
   };
 }

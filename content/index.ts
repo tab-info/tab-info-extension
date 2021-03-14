@@ -1,14 +1,18 @@
 import UnreachableError from '../lib/errors/unreachable';
 import { assertIsMessage } from '../lib/guards';
 import { Message } from '../lib/types';
-import { updateFaviconBasedOnCurrentPageInfo } from './utils/favicon';
+import { debug } from '../src/utils/logging';
 import { handleGetPageInfoRequestMessage } from './messages/handlers';
 import { alertBackgroundScriptOfReadiness } from './messages/intiators';
-import { debug } from '../src/utils/logging';
-import { PartialChromeRuntimeApi, PartialDocumentApi } from './types';
+import {
+  ContentChromeRuntimeAPI,
+  ContentChromeRuntimeOnMessageAPI,
+  ContentDocumentAPI
+} from './types';
+import { updateFaviconBasedOnCurrentPageInfo } from './utils/favicon';
 
 function handleMessage(
-  api: PartialDocumentApi,
+  api: ContentDocumentAPI,
   message: Message,
   sender: chrome.runtime.MessageSender,
   sendResponse: (_resp?: any) => void
@@ -29,29 +33,46 @@ function handleMessage(
       );
   }
 }
-function setupMessageListeners(
-  onMessage: PartialChromeRuntimeApi['onMessage'],
-  api: PartialDocumentApi
+
+/**
+ * Setup message listeners in the content script
+ *
+ * @param onMessage - the `onMessage` portion of the `chrome.runtime` extension API
+ * @param documentApi - a subset of the `document` DOM api
+ *
+ * @alpha
+ */
+function setupContentMessageListeners(
+  onMessage: ContentChromeRuntimeOnMessageAPI,
+  documentApi: ContentDocumentAPI
 ) {
-  if (!api) throw new Error('null api');
-  const handler = handleMessage.bind(null, api);
+  if (!documentApi) throw new Error('null api');
+  const handler = handleMessage.bind(null, documentApi);
   onMessage.addListener(function (message, sender, sendResponse) {
     assertIsMessage(message);
     handler(message, sender, sendResponse);
   });
 }
 
-async function main(chromeApi: PartialChromeRuntimeApi, api: PartialDocumentApi) {
+async function main(chromeApi: ContentChromeRuntimeAPI, api: ContentDocumentAPI) {
   if (!api) throw new Error('null api');
-  updateFaviconBasedOnCurrentPageInfo(api);
-  setupMessageListeners(chromeApi.onMessage, api);
+  await updateFaviconBasedOnCurrentPageInfo(api);
+  setupContentMessageListeners(chromeApi.onMessage, api);
   await alertBackgroundScriptOfReadiness(chromeApi.sendMessage, api);
 }
 
 if (!window.haltBoot) main(chrome.runtime, document);
 
+export { SendMessageFn } from './messages/intiators';
 export {
-  setupMessageListeners,
+  ContentChromeRuntimeAPI,
+  ContentChromeRuntimeOnMessageAPI,
+  ContentDocumentAPI
+} from './types';
+export { getPageInfo } from './utils/page-info';
+export {
+  setupContentMessageListeners,
   alertBackgroundScriptOfReadiness,
   updateFaviconBasedOnCurrentPageInfo,
 };
+
