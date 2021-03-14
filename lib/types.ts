@@ -15,6 +15,20 @@ export interface TabInfo {
    * The innerText of the `<meta type="description">` element
    */
   pageDescription?: string;
+
+  /**
+   * The title to be rendered in the popup
+   * @remarks
+   * Defaults to {@link TabInfo.pageTitle}
+   */
+  popupTitle?: string;
+  
+  /**
+   * The description to be rendered in the popup
+   * @remarks
+   * Defaults to {@link TabInfo.pageDescription}
+   */
+  popupDescription?: string;
   /**
    * The URL of the page
    */

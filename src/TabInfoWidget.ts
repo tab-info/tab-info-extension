@@ -1,6 +1,8 @@
 import Component, { hbs } from '@glimmerx/component';
 import * as color from 'color';
 import { TabInfo } from '../lib/types';
+import safeMarkdown from './helpers/safe-markdown';
+import or from './helpers/or';
 
 function styleStringFromButtonColor(buttonColor: string): string {
   const buttonCol = color(buttonColor);
@@ -32,13 +34,13 @@ export default class TabInfoWidget extends Component<{ tabInfo: TabInfo }> {
   }
   
   static template = hbs`
-    <div id="intro" style={{this.styleString}}>
-      <h1>
-        {{@tabInfo.pageTitle}}
-      </h1>
-      <h3>
-       {{@tabInfo.pageDescription}}
-      </h3>
+    <div id="popup-content" style={{this.styleString}}>
+      <div class="container">
+        <h1>
+          {{or @tabInfo.popupTitle @tabInfo.pageTitle}}
+        </h1>
+        {{{safeMarkdown (or @tabInfo.popupDescription @tabInfo.pageDescription)}}}
+      </div>
     </div>
   `;
 }

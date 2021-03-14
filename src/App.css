@@ -3,7 +3,7 @@ body {
 }
 
 #app {
-  background: #1E293B;
+  background: #1e293b;
   min-height: 100vh;
 
   display: grid;
@@ -11,24 +11,25 @@ body {
   justify-content: center;
 }
 
-#intro {
+#popup-content {
   width: 34em;
-}
-
-#intro h1, #intro h3 {
   font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#popup-content .container {
+  padding: 0.35em 1em;
+}
+
+
+#popup-content h1,
+#popup-content h2,
+#popup-content h3,
+#popup-content h4,
+#popup-content h5 {
   font-style: italic;
-
-  /* color: #FFFFFF; */
-  margin: 0.35em;
 }
 
-#intro img {
-  float: left;
-  width: 6.5em;
-  margin: 0.5em 2em;
-}
 
-#intro a {
-  color: #FFFFFF;
+#popup-content a {
+  color: #ffffff;
 }

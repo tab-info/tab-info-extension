@@ -145,6 +145,8 @@ export interface TabInfo {
     pageDescription?: string;
     pageTitle: string;
     pageUrl: string;
+    popupDescription?: string;
+    popupTitle?: string;
 }
 
 // @alpha

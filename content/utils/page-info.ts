@@ -35,11 +35,15 @@ export async function getPageInfo(documentApi: ContentDocumentAPI): Promise<Page
   const pageTitle = documentApi.title;
   const pageUrl = documentApi.location.toString();
   const buttonColor = rawTabInfo['button-color'];
+  const popupTitle = rawTabInfo['popup-title'];
+  const popupDescription = rawTabInfo['popup-description'];
   const tabInfo: TabInfo = {
     pageTitle,
     pageDescription,
     pageUrl,
     buttonColor,
+    popupTitle,
+    popupDescription
   };
   // Return the PageInfo
   return {

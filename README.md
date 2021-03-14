@@ -43,11 +43,12 @@ browser toolbar
 
 ### Supported properties
 
-| Name                | Type     | Description                                  |
-| ------------------- | -------- | -------------------------------------------- |
-| `enabled`           | `string` | "true" in order to activate the extension    |
-| `button-color`      | `string` | Color of the toolbar button (e.g., `"#ff0"`) |
-| `popup-description` | `string` | Text in the extension popup window           |
+| Name                | Type     | Description                                   |
+| ------------------- | -------- | --------------------------------------------  |
+| `enabled`           | `string` | "true" in order to activate the extension     |
+| `button-color`      | `string` | Color of the toolbar button (e.g., `"#ff0"`)  |
+| `popup-title`       | `string` | Title of the extension popup window           |
+| `popup-description` | `string` | Text (markdown) in the extension popup window |
 
 ## Contributing to this project
 

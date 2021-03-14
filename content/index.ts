@@ -63,7 +63,7 @@ async function main(chromeApi: ContentChromeRuntimeAPI, api: ContentDocumentAPI)
 
 if (!window.haltBoot) main(chrome.runtime, document);
 
-export { SendMessageFn } from './messages/intiators';
+export type { SendMessageFn } from './messages/intiators';
 export {
   ContentChromeRuntimeAPI,
   ContentChromeRuntimeOnMessageAPI,

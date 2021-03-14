@@ -46,8 +46,8 @@ module.exports = () => {
     devtool: 'inline-cheap-source-map',
     plugins,
     performance: {
-      maxAssetSize: 400000,
-      maxEntrypointSize: 400000,
+      maxAssetSize: 700000,
+      maxEntrypointSize: 700000,
     },
     module: {
       rules: [
