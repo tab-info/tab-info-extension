@@ -10,26 +10,3 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-#popup-content {
-  width: 34em;
-  font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-#popup-content .container {
-  padding: 0.35em 1em;
-}
-
-
-#popup-content h1,
-#popup-content h2,
-#popup-content h3,
-#popup-content h4,
-#popup-content h5 {
-  font-style: italic;
-}
-
-
-#popup-content a {
-  color: #ffffff;
-}

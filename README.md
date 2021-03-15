@@ -47,14 +47,43 @@ browser toolbar
 
 ### Supported properties
 
-Information can be embedded in the HTML of the page itself 
-
 | Name                | Type     | Description                                   |
 | ------------------- | -------- | --------------------------------------------  |
 | `enabled`           | `string` | "true" in order to activate the extension     |
 | `button-color`      | `string` | Color of the toolbar button (e.g., `"#ff0"`)  |
 | `popup-title`       | `string` | Title of the extension popup window           |
 | `popup-description` | `string` | Text (markdown) in the extension popup window |
+
+### Using a remote data source
+
+We also support retrieval of information from a JSON API, through the use of a `info-url` property
+
+For example if this meta tag is found in a tab's HTML
+
+```html
+<meta type="tab-info" name="info-url" content="http://localhost:3001?tabId=abcd1234" />
+```
+
+This extension will make a GET request to `http://localhost:3001?tabId=abcd1234` in order to obtain the information that would otherwise have been found in other `tab-info` meta tags.
+
+##### `GET http://localhost:3001?tabId=abcd1234`
+```json
+{
+  "enabled": true,
+  "tabInfo": {
+    "buttonColor": "#f0f",
+    "popupTitle": "Dev Environment: Staging",
+    "popupDescription": "### Uptime \n 8d 3h 22m \n ### Connecting \n ```\nssh root@127.0.0.1\n``` \n"
+  }
+}
+
+```
+
+
+*NOTE:* Information in meta tags will be _combined_ with information found via this API call, with *the information from the API call "winning" in the event of any overlap*
+
+
+
 
 ## Contributing to this project
 

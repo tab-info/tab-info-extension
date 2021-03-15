@@ -1,3 +1,4 @@
+import './TabInfoWidget.css';
 import Component, { hbs } from '@glimmerx/component';
 import * as color from 'color';
 import { TabInfo } from '../lib/types';

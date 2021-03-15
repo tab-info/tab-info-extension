@@ -1,5 +1,6 @@
 import { GetPageInfoMessage, PageInfo } from '../../lib/types';
 import { ContentDocumentAPI } from '../types';
+import { debug } from '../utils/logging';
 import { getPageInfo } from '../utils/page-info';
 
 export async function handleGetPageInfoRequestMessage(
@@ -9,5 +10,7 @@ export async function handleGetPageInfoRequestMessage(
   sendResponse: (arg: PageInfo) => void
 ) {
   if (!api) throw new Error('null api');
-  sendResponse(await getPageInfo(api));
+  const pageInfo = await getPageInfo(api);
+  debug('about to pass pageInfo to popup', pageInfo);
+  sendResponse(pageInfo);
 }
