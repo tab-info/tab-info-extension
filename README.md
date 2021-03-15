@@ -47,6 +47,8 @@ browser toolbar
 
 ### Supported properties
 
+Information can be embedded in the HTML of the page itself 
+
 | Name                | Type     | Description                                   |
 | ------------------- | -------- | --------------------------------------------  |
 | `enabled`           | `string` | "true" in order to activate the extension     |
