@@ -51,6 +51,7 @@ function setupContentMessageListeners(
   onMessage.addListener(function (message, sender, sendResponse) {
     assertIsMessage(message);
     handler(message, sender, sendResponse);
+    return true;
   });
 }
 
