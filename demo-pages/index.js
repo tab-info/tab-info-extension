@@ -6,17 +6,21 @@ const DEMO_APP_PORT = process.env.DEMO_APP_PORT || 3001;
 
 const app = express();
 
+const RDEV_SAMPLE_RESPONSE = {
+  id: 'rdev-d50f3b06-5cc1-415a-9b5c-6ed40d06f5fb',
+  color: '#880',
+  title: 'Connected to Rdev - whimsical-dumbledore',
+  description: '**bold me please**',
+  // description:
+  //   '<h2 style="color:red">Information</h2>\n\n **test** \n\n- **Developer** - `skasturi`\n\n- **Last Accessed At** - 2021-04-30 20:54:42\n\n- **Forwarded Ports** - 4443, 2702\n\n',
+};
 const remoteTabInfo = {
-  abcd1234: {
-    buttonColor: '#aa0',
-    popupTitle: 'Dev Environment: Staging',
-    popupDescription:
-      '### Uptime \n 8d 3h 22m \n ### Connecting to this environment \n ```\nssh root@127.0.0.1\n``` \n',
-  },
+  'rdev-d50f3b06-5cc1-415a-9b5c-6ed40d06f5fb': RDEV_SAMPLE_RESPONSE,
 };
 
 app.use(express.static(join(__filename, '..', 'pages')));
 
+// http://localhost:3001/api/tabInfo/rdev-d50f3b06-5cc1-415a-9b5c-6ed40d06f5fb
 app.get('/api/tabInfo/:id', (request, response) => {
   const tabId = request.params['id'];
   if (!tabId || typeof tabId !== 'string') {

@@ -1,6 +1,18 @@
 #popup-content {
   width: 34em;
+  font-size: 1rem;
   font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+#popup-content p {
+  font-size: 1.1rem;
+}
+#popup-content code {
+  color: #bbb;
+  background: #333;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 #popup-content .container {
@@ -20,8 +32,8 @@
 }
 
 #popup-content pre {
-    padding: 1em;
-    background-color: #ccc;
-    color: #000;
-    line-height: 1.1em;
+  padding: 1em;
+  background-color: #ccc;
+  color: #000;
+  line-height: 1.1em;
 }

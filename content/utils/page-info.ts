@@ -52,9 +52,20 @@ export async function getPageInfo(documentApi: ContentDocumentAPI): Promise<Page
   if (typeof infoUrl === 'string') {
     debug('info-url detected', infoUrl);
     const response = await fetch(infoUrl);
-    const jsonData = await response.json();
+    // TODO a type guard would be nice here, because this API has errored occasionally
+    const jsonData = (await response.json()) as {
+      id: string;
+      color: string;
+      title: string;
+      description: string;
+    };
+    const normalizedData: Partial<TabInfo> = {
+      buttonColor: jsonData.color,
+      popupTitle: jsonData.title,
+      popupDescription: jsonData.description,
+    };
     debug('info-url data retrieval complete', jsonData);
-    Object.assign(remoteTabInfo, jsonData);
+    Object.assign(remoteTabInfo, normalizedData);
     debug('info-url ready with remote data', remoteTabInfo);
   }
 

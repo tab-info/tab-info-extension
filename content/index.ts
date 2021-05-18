@@ -7,7 +7,7 @@ import { alertBackgroundScriptOfReadiness } from './messages/intiators';
 import {
   ContentChromeRuntimeAPI,
   ContentChromeRuntimeOnMessageAPI,
-  ContentDocumentAPI
+  ContentDocumentAPI,
 } from './types';
 import { updateFaviconBasedOnCurrentPageInfo } from './utils/favicon';
 
@@ -68,7 +68,7 @@ export type { SendMessageFn } from './messages/intiators';
 export {
   ContentChromeRuntimeAPI,
   ContentChromeRuntimeOnMessageAPI,
-  ContentDocumentAPI
+  ContentDocumentAPI,
 } from './types';
 export { getPageInfo } from './utils/page-info';
 export {
@@ -76,4 +76,3 @@ export {
   alertBackgroundScriptOfReadiness,
   updateFaviconBasedOnCurrentPageInfo,
 };
-
