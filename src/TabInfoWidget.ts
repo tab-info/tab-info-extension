@@ -8,7 +8,10 @@ import or from './helpers/or';
 function styleStringFromButtonColor(buttonColor: string): string {
   const buttonCol = color(buttonColor);
   // TEXT COLOR BASED ON BACKGROUND COLOR
-  const textColor = buttonCol.luminosity() < 0.4 ? 'white' : 'black';
+  const textColor =
+    buttonCol.contrast(color.rgb([0, 0, 0])) < buttonCol.contrast(color.rgb([255, 255, 255]))
+      ? 'white'
+      : 'black';
   const styleParts = [
     ['background-color', buttonColor],
     ['color', textColor],
@@ -20,7 +23,7 @@ function styleStringFromButtonColor(buttonColor: string): string {
 /**
  * The main component in the popup page that renders the information obtained
  * by the content script.
- * 
+ *
  * @alpha
  */
 export default class TabInfoWidget extends Component<{ tabInfo: TabInfo }> {
@@ -34,7 +37,7 @@ export default class TabInfoWidget extends Component<{ tabInfo: TabInfo }> {
     if (buttonColor) return styleStringFromButtonColor(buttonColor);
     return '';
   }
-  
+
   static template = hbs`
     <div id="popup-content" style={{this.styleString}}>
       <div class="container">
