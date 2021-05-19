@@ -1,9 +1,6 @@
 // @ts-check
 import { setupBackgroundMessageListeners } from '../../../background/index';
-import {
-  FALLBACK_TAB_COLOR,
-  TOOLBAR_ICON_SQUARE_SIZE
-} from '../../../lib/constants';
+import { FALLBACK_TAB_COLOR, TOOLBAR_ICON_SQUARE_SIZE } from '../../../lib/constants';
 import { makeIconFromColor } from '../../../lib/icon';
 import { q_module, q_test } from '../../util';
 
@@ -13,9 +10,7 @@ const FALLBACK_COLOR_UINT8_CLAMPED_ARRAY = makeIconFromColor(
   TOOLBAR_ICON_SQUARE_SIZE
 ).data;
 
-
 q_module('background process icon-update tests', () => {
-
   q_test('responds to ENABLED content_script_ready appropriately', async (assert) => {
     assert.expect(11);
     function addListener(cb) {
@@ -43,8 +38,8 @@ q_module('background process icon-update tests', () => {
     }
 
     /**
-     * 
-     * @param {{tabId: number, imageData?: ImageData | { [index: number]: ImageData; }}} param0 
+     *
+     * @param {{tabId: number, imageData?: ImageData | { [index: number]: ImageData; }}} param0
      */
     function setIcon({ tabId, imageData }) {
       if (!(imageData instanceof ImageData)) throw new Error('Invalid image');
@@ -109,15 +104,14 @@ q_module('background process icon-update tests', () => {
           },
         };
         cb(msg, { tab: { id: -1 } }, rcvResponse);
-        
       }, 0);
       assert.ok(true, 'onMessage.addListener called');
     }
     /**
-     * 
-     * @param {{tabId: number, imageData?: ImageData | { [index: number]: ImageData; }}} param0 
+     *
+     * @param {{tabId: number, imageData?: ImageData | { [index: number]: ImageData; }}} param0
      */
-     function setIcon({ tabId, imageData }) {
+    function setIcon({ tabId, imageData }) {
       if (!(imageData instanceof ImageData)) throw new Error('Invalid image');
       assert.ok(true, 'chrome.pageAction.setIcon was called upon receipt of message');
       assert.equal(tabId, -1, 'chrome.pageAction.setIcon was called with correct tabId');
@@ -159,5 +153,4 @@ q_module('background process icon-update tests', () => {
       }
     );
   });
-
 });
