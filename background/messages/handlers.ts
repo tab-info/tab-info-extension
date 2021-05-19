@@ -26,15 +26,9 @@ export function handleContentScriptReadyMessage(
  */
 export async function handleFetchRemotePageInfoMessage(
   message: FetchRemotePageInfoMessage,
-  sender: chrome.runtime.MessageSender,
+  _sender: chrome.runtime.MessageSender,
   sendResponse: (arg: any) => void
 ) {
-  const { tab: senderTab } = sender;
-  if (!senderTab)
-    throw new Error('Received a "fetch_remote_page_info" event from a sender that is not a tab');
-  const { id: senderTabId } = senderTab;
-  if (typeof senderTabId === 'undefined')
-    throw new Error('Received a "fetch_remote_page_info" event from a sender that is not a tab');
   const { url } = message;
   // TODO: error handling (how do we want this to behave if the backend service is down?)
   const resp = await fetch(url, {

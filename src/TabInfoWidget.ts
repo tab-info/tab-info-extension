@@ -20,7 +20,7 @@ function styleStringFromButtonColor(buttonColor: string): string {
 /**
  * The main component in the popup page that renders the information obtained
  * by the content script.
- *
+ * 
  * @alpha
  */
 export default class TabInfoWidget extends Component<{ tabInfo: TabInfo }> {
@@ -34,7 +34,7 @@ export default class TabInfoWidget extends Component<{ tabInfo: TabInfo }> {
     if (buttonColor) return styleStringFromButtonColor(buttonColor);
     return '';
   }
-
+  
   static template = hbs`
     <div id="popup-content" style={{this.styleString}}>
       <div class="container">

@@ -10,9 +10,8 @@ const RDEV_SAMPLE_RESPONSE = {
   id: 'rdev-d50f3b06-5cc1-415a-9b5c-6ed40d06f5fb',
   color: '#880',
   title: 'Connected to Rdev - whimsical-dumbledore',
-  description: '**bold me please**',
-  // description:
-  //   '<h2 style="color:red">Information</h2>\n\n **test** \n\n- **Developer** - `skasturi`\n\n- **Last Accessed At** - 2021-04-30 20:54:42\n\n- **Forwarded Ports** - 4443, 2702\n\n',
+  description:
+    '<h2 style="color:red">Information</h2>\n\n **test** \n\n- **Developer** - `skasturi`\n\n- **Last Accessed At** - 2021-04-30 20:54:42\n\n- **Forwarded Ports** - 4443, 2702\n\n',
 };
 const remoteTabInfo = {
   'rdev-d50f3b06-5cc1-415a-9b5c-6ed40d06f5fb': RDEV_SAMPLE_RESPONSE,

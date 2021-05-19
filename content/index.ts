@@ -72,7 +72,7 @@ if (!window.haltBoot) main(chrome.runtime, document);
 export {
   ContentChromeRuntimeAPI,
   ContentChromeRuntimeOnMessageAPI,
-  ContentDocumentAPI,
+  ContentDocumentAPI
 } from './types';
 export { getPageInfo } from './utils/page-info';
 export {

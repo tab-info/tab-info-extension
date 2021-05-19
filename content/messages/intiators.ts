@@ -33,10 +33,11 @@ export async function alertBackgroundScriptOfReadiness(
 }
 
 /**
- * Alert the background script of the callback script's readiness to handle requests for {@link tab-info#PageInfo}
+ * Ask the background script to retrieve a {@link tab-info#PageInfo} from some remote service
+ * at an accessible URL
  *
- * @param sendMessage - Callback which, when invoked, alerts the background script
- * @param api - part of the `document` DOM api
+ * @param sendMessage - Callback which, when invoked, asks the background script to fetch data
+ * @param url - url to fetch data from
  * @returns
  *
  * @alpha
