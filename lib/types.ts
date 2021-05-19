@@ -22,7 +22,7 @@ export interface TabInfo {
    * Defaults to {@link TabInfo.pageTitle}
    */
   popupTitle?: string;
-  
+
   /**
    * The description to be rendered in the popup
    * @remarks
@@ -98,6 +98,16 @@ export interface ContentScriptReadyMessage extends MessageBase<'content_script_r
 export interface GetPageInfoMessage extends MessageBase<'get_page_info'> {}
 
 /**
+ * A message sent *from* the content script *to* the background script
+ * asking for pageInfo to be fetched from some API endpoint.
+ *
+ * @public
+ */
+export interface FetchRemotePageInfoMessage extends MessageBase<'fetch_remote_page_info'> {
+  url: string;
+}
+
+/**
  * A mapping of message keys to the types that define their
  * entire shape
  *
@@ -106,6 +116,7 @@ export interface GetPageInfoMessage extends MessageBase<'get_page_info'> {}
 export interface MessageMap {
   content_script_ready: ContentScriptReadyMessage;
   get_page_info: GetPageInfoMessage;
+  fetch_remote_page_info: FetchRemotePageInfoMessage;
 }
 /**
  * A type that matches any valid message key
@@ -123,7 +134,18 @@ export type Message = MessageMap[keyof MessageMap];
 
 /**
  * An array of all valid message keys
- * 
+ *
  * @public
  */
-export const ALL_MESSAGE_KEYS = ['content_script_ready' as const, 'get_page_info' as const];
+export const ALL_MESSAGE_KEYS = [
+  'content_script_ready' as const,
+  'get_page_info' as const,
+  'fetch_remote_page_info' as const,
+];
+
+export interface RemotePageInfoPayload {
+  id: string;
+  color: string;
+  title: string;
+  description: string;
+}

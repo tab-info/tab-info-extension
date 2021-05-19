@@ -1,6 +1,7 @@
 import { Dict } from '@mike-north/types';
-import { PageInfo, TabInfo } from '../../lib/types';
-import { ContentDocumentAPI } from '../types';
+import { MessageKey, PageInfo, TabInfo } from '../../lib/types';
+import { askBackgroundScriptForPageInfoRetrieval } from '../messages/intiators';
+import { ContentDocumentAPI, SendMessageFn } from '../types';
 import { debug } from './logging';
 
 function getRawTabInfoMetadata(api: ContentDocumentAPI): Dict<string> {
@@ -24,7 +25,10 @@ function getRawTabInfoMetadata(api: ContentDocumentAPI): Dict<string> {
  *
  * @public
  */
-export async function getPageInfo(documentApi: ContentDocumentAPI): Promise<PageInfo> {
+export async function getPageInfo(
+  documentApi: ContentDocumentAPI,
+  sendMessage: SendMessageFn<MessageKey>
+): Promise<PageInfo> {
   const rawTabInfo = getRawTabInfoMetadata(documentApi);
   const infoUrl = rawTabInfo['info-url'];
 
@@ -51,14 +55,7 @@ export async function getPageInfo(documentApi: ContentDocumentAPI): Promise<Page
   const remoteTabInfo: Partial<TabInfo> = {};
   if (typeof infoUrl === 'string') {
     debug('info-url detected', infoUrl);
-    const response = await fetch(infoUrl);
-    // TODO a type guard would be nice here, because this API has errored occasionally
-    const jsonData = (await response.json()) as {
-      id: string;
-      color: string;
-      title: string;
-      description: string;
-    };
+    const jsonData = await askBackgroundScriptForPageInfoRetrieval(sendMessage, infoUrl);
     const normalizedData: Partial<TabInfo> = {
       buttonColor: jsonData.color,
       popupTitle: jsonData.title,
