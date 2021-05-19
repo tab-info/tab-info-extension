@@ -143,9 +143,22 @@ export const ALL_MESSAGE_KEYS = [
   'fetch_remote_page_info' as const,
 ];
 
+/**
+ * JSON structure provided by a remote tab info information source
+ *
+ * @public
+ */
 export interface RemotePageInfoPayload {
-  id: string;
+  /**
+   * Color of the button in the browser UI
+   */
   color: string;
+  /**
+   * Title to be rendered at the top of the popup
+   */
   title: string;
+  /**
+   * Description (markdown) to be rendered below the title in the popup
+   */
   description: string;
 }
