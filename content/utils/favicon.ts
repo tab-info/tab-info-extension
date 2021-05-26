@@ -1,6 +1,7 @@
+import { MessageKey } from '../../lib';
 import { FAVICON_SQUARE_SIZE } from '../../lib/constants';
 import { makeCanvas } from '../../lib/icon';
-import { ContentDocumentAPI } from '../types';
+import { ContentDocumentAPI, SendMessageFn } from '../types';
 import { getPageInfo } from './page-info';
 
 function createFaviconLink(imageData: string) {
@@ -33,9 +34,10 @@ export function setFaviconColor(
  * @alpha
  */
 export async function updateFaviconBasedOnCurrentPageInfo(
-  documentApi: ContentDocumentAPI
+  documentApi: ContentDocumentAPI,
+  sendMessage: SendMessageFn<MessageKey>
 ): Promise<void> {
-  const pageInfo = await getPageInfo(documentApi);
+  const pageInfo = await getPageInfo(documentApi, sendMessage);
   const buttonColor = pageInfo.tabInfo.buttonColor;
   if (buttonColor) {
     setFaviconColor(buttonColor, documentApi);

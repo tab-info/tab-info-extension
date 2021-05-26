@@ -9,5 +9,5 @@ An array of all valid message keys
 <b>Signature:</b>
 
 ```typescript
-ALL_MESSAGE_KEYS: ("content_script_ready" | "get_page_info")[]
+ALL_MESSAGE_KEYS: ("content_script_ready" | "get_page_info" | "fetch_remote_page_info")[]
 ```

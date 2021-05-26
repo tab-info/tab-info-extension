@@ -12,7 +12,7 @@ q_module('content script setup tests', () => {
     /** @type {import('../../../content/types').ContentChromeRuntimeOnMessageAPI} */
     const partialChromeApi = { addListener };
 
-    setupContentMessageListeners(partialChromeApi, document);
+    setupContentMessageListeners(partialChromeApi, function() {}, document);
   });
   q_test('indicates readiness after setup', async (assert) => {
     assert.expect(7);
@@ -31,6 +31,6 @@ q_module('content script setup tests', () => {
 
     const partialChromeApi = { addListener };
 
-    setupContentMessageListeners(partialChromeApi, document);
+    setupContentMessageListeners(partialChromeApi, function() {}, document);
   });
 });

@@ -17,6 +17,7 @@ const ALLOWED_TAGS = [
   'code',
   'pre',
   'b',
+  'strong',
   'em',
   '#text',
   'img',

@@ -17,5 +17,6 @@ export interface MessageMap
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [content\_script\_ready](./tab-info.messagemap.content_script_ready.md) | [ContentScriptReadyMessage](./tab-info.contentscriptreadymessage.md) |  |
+|  [fetch\_remote\_page\_info](./tab-info.messagemap.fetch_remote_page_info.md) | [FetchRemotePageInfoMessage](./tab-info.fetchremotepageinfomessage.md) |  |
 |  [get\_page\_info](./tab-info.messagemap.get_page_info.md) | [GetPageInfoMessage](./tab-info.getpageinfomessage.md) |  |
 

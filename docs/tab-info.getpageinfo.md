@@ -9,7 +9,7 @@ Create a [PageInfo](./tab-info.pageinfo.md) object based on the content of the c
 <b>Signature:</b>
 
 ```typescript
-export declare function getPageInfo(documentApi: ContentDocumentAPI): Promise<PageInfo>;
+export declare function getPageInfo(documentApi: ContentDocumentAPI, sendMessage: SendMessageFn<MessageKey>): Promise<PageInfo>;
 ```
 
 ## Parameters
@@ -17,6 +17,7 @@ export declare function getPageInfo(documentApi: ContentDocumentAPI): Promise<Pa
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  documentApi | [ContentDocumentAPI](./tab-info.contentdocumentapi.md) | partial <code>document</code> DOM API |
+|  sendMessage | SendMessageFn&lt;[MessageKey](./tab-info.messagekey.md)<!-- -->&gt; |  |
 
 <b>Returns:</b>
 

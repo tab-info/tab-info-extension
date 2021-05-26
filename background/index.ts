@@ -2,7 +2,10 @@ import UnreachableError from '../lib/errors/unreachable';
 import { assertIsMessage } from '../lib/guards';
 import { Message } from '../lib/types';
 import { debug } from '../src/utils/logging';
-import { handleContentScriptReadyMessage } from './messages/handlers';
+import {
+  handleContentScriptReadyMessage,
+  handleFetchRemotePageInfoMessage,
+} from './messages/handlers';
 import { BackgroundChromeRuntimeOnMessageAPI, BackgroundPageActionAPI } from './types';
 
 function handleMessage(
@@ -15,6 +18,9 @@ function handleMessage(
   switch (message.key) {
     case 'content_script_ready':
       handleContentScriptReadyMessage(message, sender, sendResponse, pageActionApi);
+      break;
+    case 'fetch_remote_page_info':
+      handleFetchRemotePageInfoMessage(message, sender, sendResponse);
       break;
     // Messages intended for content script. Ignore deliberately
     case 'get_page_info':
@@ -40,6 +46,7 @@ function setupBackgroundMessageListeners(
   onMessage.addListener((message, sender, sendResponse) => {
     assertIsMessage(message);
     handler(message, sender, sendResponse);
+    return true;
   });
 }
 

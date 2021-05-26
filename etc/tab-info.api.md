@@ -6,11 +6,13 @@
 
 import Component from '@glimmerx/component';
 
+// Warning: (ae-forgotten-export) The symbol "SendMessageFn" needs to be exported by the entry point index.d.ts
+//
 // @alpha
-export function alertBackgroundScriptOfReadiness(sendMessage: SendMessageFn, api: ContentDocumentAPI): Promise<void>;
+export function alertBackgroundScriptOfReadiness(sendMessage: SendMessageFn<'content_script_ready'>, api: ContentDocumentAPI): Promise<void>;
 
 // @public
-export const ALL_MESSAGE_KEYS: ("content_script_ready" | "get_page_info")[];
+export const ALL_MESSAGE_KEYS: ("content_script_ready" | "get_page_info" | "fetch_remote_page_info")[];
 
 // @alpha
 export class App extends Component<{
@@ -67,6 +69,12 @@ export const FALLBACK_TAB_COLOR = "#ff0";
 // @alpha
 export const FAVICON_SQUARE_SIZE = 16;
 
+// @public
+export interface FetchRemotePageInfoMessage extends MessageBase<'fetch_remote_page_info'> {
+    // (undocumented)
+    url: string;
+}
+
 // @alpha
 export function getActiveTabInCurrentWindow(query: typeof chrome.tabs.query): Promise<TabWithId>;
 
@@ -74,7 +82,7 @@ export function getActiveTabInCurrentWindow(query: typeof chrome.tabs.query): Pr
 export function getButtonColorStringFromTabInfo(tabInfo: TabInfo): string;
 
 // @public
-export function getPageInfo(documentApi: ContentDocumentAPI): Promise<PageInfo>;
+export function getPageInfo(documentApi: ContentDocumentAPI, sendMessage: SendMessageFn<MessageKey>): Promise<PageInfo>;
 
 // @public
 export interface GetPageInfoMessage extends MessageBase<'get_page_info'> {
@@ -109,6 +117,8 @@ export interface MessageMap {
     // (undocumented)
     content_script_ready: ContentScriptReadyMessage;
     // (undocumented)
+    fetch_remote_page_info: FetchRemotePageInfoMessage;
+    // (undocumented)
     get_page_info: GetPageInfoMessage;
 }
 
@@ -121,6 +131,13 @@ export interface PageInfo {
 // @alpha
 export const POPUP_UI_CONTAINER_ELEM = "#app";
 
+// @public
+export interface RemotePageInfoPayload {
+    color: string;
+    description: string;
+    title: string;
+}
+
 // @alpha
 export const RESPONSE_TIMEOUT_THRESHOLD = 1000;
 
@@ -128,16 +145,10 @@ export const RESPONSE_TIMEOUT_THRESHOLD = 1000;
 export function retreivePageInfoForCurrentTab(sendMessage: typeof chrome.tabs.sendMessage, query: typeof chrome.tabs.query): Promise<PageInfo>;
 
 // @alpha
-export type SendMessageFn = (message: {
-    key: 'content_script_ready';
-    pageInfo: PageInfo;
-}, responseCallback?: ((response: any) => void) | undefined) => void;
-
-// @alpha
 export function setupBackgroundMessageListeners(onMessage: BackgroundChromeRuntimeOnMessageAPI, pageActionApi: BackgroundPageActionAPI): void;
 
 // @alpha
-export function setupContentMessageListeners(onMessage: ContentChromeRuntimeOnMessageAPI, documentApi: ContentDocumentAPI): void;
+export function setupContentMessageListeners(onMessage: ContentChromeRuntimeOnMessageAPI, sendMessage: SendMessageFn<MessageKey>, documentApi: ContentDocumentAPI): void;
 
 // @public
 export interface TabInfo {
@@ -175,7 +186,7 @@ export class UnreachableError extends Error {
 export const UPDATE_EVENT_DEBOUNCE_THRESHOLD = 50;
 
 // @alpha
-export function updateFaviconBasedOnCurrentPageInfo(documentApi: ContentDocumentAPI): Promise<void>;
+export function updateFaviconBasedOnCurrentPageInfo(documentApi: ContentDocumentAPI, sendMessage: SendMessageFn<MessageKey>): Promise<void>;
 
 
 ```
