@@ -1,6 +1,6 @@
 {
   "name": "tab-info",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A chrome extension for surfacing embedded information in web pages in the browser toolbar",
   "homepage": "https://github.com/mike-north/tab-info-extension",
   "author": {

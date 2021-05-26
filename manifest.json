@@ -1,6 +1,6 @@
 {
   "name": "Tab Info",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifest_version": 2,
   "description": "Web application meta tag information, rendered in your browser toolbar",
   "homepage_url": "https://github.com/mike-north/page-meta-indicator-extension",
